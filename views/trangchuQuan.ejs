@@ -1,0 +1,236 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Quản Lý Trật Tự Đô Thị</title>
+	<link rel="stylesheet" type="text/css" href="/css/normalize.css">
+	<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/homeQuan.css">
+	<script src="/jquery/jquery.js"></script>
+	<script src="/bootstrap/js/bootstrap.min.js"></script>
+	<script lang="javascript">
+			function ShowContent(id){
+				console.log(id);
+				
+				var a = document.getElementById("show"+id);
+				var p_list = document.getElementsByClassName("content"+id);
+				
+				if(a.innerHTML === '<span class="glyphicon glyphicon-chevron-down"></span>'){
+					a.innerHTML='<span class="glyphicon glyphicon-chevron-up"></span>';
+					p_list[0].style.display = "block";
+				} 
+				else {
+					a.innerHTML='<span class="glyphicon glyphicon-chevron-down"></span>';
+					p_list[0].style.display= "none";
+				}
+			}
+	</script>
+	
+</head>
+<body>
+	<div class="container-fluid">
+		<header>
+			<nav class="navbar navbar-default navbar-fixed-top">
+				<div class="container1 container">
+					<!-- Brand and toggle get grouped for better mobile display -->
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="../quan/"><img src="/images/QLDT.ico"></a>
+					</div>
+
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav navbar-right">
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Quy hoạch <span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<!-- <li><a href="#">Action</a></li>
+									<li><a href="#">Another action</a></li>
+									<li><a href="#">Something else here</a></li>
+									<li role="separator" class="divider"></li>
+									<li><a href="#">Separated link</a></li> -->
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Xây dựng <span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<!-- <li><a href="#">Action</a></li>
+									<li><a href="#">Another action</a></li>
+									<li><a href="#">Something else here</a></li>
+									<li role="separator" class="divider"></li>
+									<li><a href="#">Separated link</a></li> -->
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+								aria-haspopup="true" aria-expanded="false">Trật tự đô thị
+								<span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li class="dropdown-submenu">
+										<a class="test" tabindex="-1" href="#">Trật tự xây dựng<span class="caret"></span></a>
+										<ul class="dropdown-menu">
+										<li><a tabindex="-1" href="../quan/xuphatQuan">Thông tin xử phạt</a></li>
+										<li><a tabindex="-1" href="../vanban">Văn bản</a></li>
+										</ul>
+									</li>
+									<li class="dropdown-submenu submenu2">
+										<a class="test" tabindex="-1" href="#">Trật tự lòng lề đường<span class="caret"></span></a>
+										<ul class="dropdown-menu">
+											<li><a tabindex="-1" href="#">Thông tin xử phạt</a></li>
+											<li><a tabindex="-1" href="#">Văn bản</a></li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Hạ tầng<span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<!-- <li><a href="#">Action</a></li>
+									<li><a href="#">Another action</a></li>
+									<li><a href="#">Something else here</a></li>
+									<li role="separator" class="divider"></li>
+									<li><a href="#">Separated link</a></li> -->
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Văn phòng<span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<!-- <li><a href="#">Action</a></li>
+									<li><a href="#">Another action</a></li>
+									<li><a href="#">Something else here</a></li>
+									<li role="separator" class="divider"></li>
+									<li><a href="#">Separated link</a></li> -->
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+									aria-haspopup="true" aria-expanded="false">Qui định<span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a href="#">Quy định về quy hoạch đô thị</a></li>
+									<li><a href="#">Quy định về xây dựng</a></li>
+									<li><a href="#">Quy định về hạ tầng kỹ thuật</a></li>
+									<li><a href="#">Quy định về xử phạt lĩnh vực xây dựng</a></li>
+									<li><a href="#">Quy định khác</a></li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="/images/login_ico.png">Tài khoản<span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a href="taikhoan">Thông tin tài khoản</a></li>
+									<li><a href="../logout">Đăng xuất</a></li>
+								</ul>
+							</li>
+						</ul>
+					</div><!-- /.navbar-collapse -->
+					<!-- <script>
+						$(document).ready(function(){
+						  $('.dropdown-submenu a.test').on("click", function(e){
+							$(this).next('ul').toggle();
+							e.stopPropagation();
+							e.preventDefault();
+						  });
+						});
+					</script> -->
+				</div><!-- /.container-fluid -->
+			</nav>
+		</header>
+		<section>
+			<div class="container container2">
+				<div class="row">
+					<div class="col-xs-4 col-md-3 table-responsive">
+						<table class="table" id="listPhuong">
+
+							<thead><b>DANH SÁCH PHƯỜNG</b></thead>
+							<tbody>
+								<%results_acc.forEach(function(rows){%>
+								<tr>
+									<td><%=rows.nameAc%></td>
+								</tr>
+								<!-- <tr>
+									<td>Phường Sơn Kỳ</td>
+								</tr>
+								<tr>
+									<td>Phường Tân Quý</td>
+								</tr>
+								<tr>
+									<td>Phường Tân Sơn Nhì</td>
+								</tr>
+								<tr>
+									<td>Phường Tân Thành</td>
+								</tr>
+								<tr>
+									<td>Phường Phú Thọ Hòa</td>
+								</tr>
+								<tr>
+									<td>Phường Hòa Thạnh</td>
+								</tr>
+	
+								<tr>
+									<td>Phường Phú Thạnh</td>
+								</tr>
+								<tr>
+									<td>Phường Hiệp tân</td>
+								</tr>
+								<tr>
+									<td>Phường Tân Thới Hòa</td>
+								</tr>
+								<tr>
+									<td>Phường Phú Trung</td>
+								</tr> -->
+								
+								<%});%>
+							</tbody>
+							
+						</table>
+					</div>
+                    <div class="col-xs-8 col-md-8 table-responsive">
+                        <table class="table" id="notify">
+                            <thead><b>THÔNG BÁO MỚI</b></thead>
+                            <tbody>
+									<% i=1%>
+									<%results.forEach(function(rows){%>
+                                <tr>
+									<td><%=i++%></td>
+									<td>
+										<h5 id="title<%=rows.id%>" class="title" style="color:blue"><b><%=rows.nameAc%> -  Ngày tuần tra: <%=rows.ngayTT%></b></h5>
+										<p  class="content<%=rows.id%>" style="display: none">
+											<span class="glyphicon glyphicon-asterisk"></span> BÁO CÁO CÔNG VIỆC:<br/>
+											&emsp;<span class="glyphicon glyphicon-chevron-right"></span> Nội dung: Công trình tại <%=rows.diachiCT%> <%=rows.hientrangCT%> được cán bộ <%=rows.canboPH%> phát hiện và được lập biên bản bởi cán bộ <%=rows.canboTN%><br/>
+											&emsp;<span class="glyphicon glyphicon-chevron-right"></span> Xác nhận từ phường:<%=(rows.xacnhan == 1 ?"Xác nhận":"Chưa xác nhận")%> <br/>
+											&emsp;<span class="glyphicon glyphicon-chevron-right"></span> Ghi chú: <%=rows.ghichu%> <br/>
+											<iframe src="<%=rows.url%>" width="250" height="150"></iframe>
+										</p>	
+									</td>
+									<td>
+										<a id="show<%=rows.id%>" onclick='ShowContent("<%=rows.id%>")'><span class="glyphicon glyphicon-chevron-down"></span></a>
+									</td>
+								</tr>
+								<script>
+									function convert(str) {
+										var date = new Date(str),
+											mnth = ("0" + (date.getMonth()+1)).slice(-2),
+											day  = ("0" + date.getDate()).slice(-2);
+										if([day, mnth, date.getFullYear()].join("-") === 'aN-aN-NaN'){
+											return ["<i>chưa xác nhận ngày/tháng/năm</i>"];
+										}
+										return [day, mnth, date.getFullYear()].join("-");
+									}
+									var ngayTT = convert("<%=rows.ngayTT%>");
+									document.getElementById("title<%=rows.id%>").innerHTML = "<b><%=rows.nameAc%> -  Ngày tuần tra: " + ngayTT+"</b>";
+								</script>
+								<%});%>
+                            </tbody>
+						</table>
+                    </div>
+                </div>
+			</div>
+		</section>
+	</div>
+</body>
+</html>

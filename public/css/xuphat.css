@@ -1,0 +1,105 @@
+.container{
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.navbar-default{
+	background: none;
+	border: none;
+}
+.navbar{
+	background: #F0F8FF;
+	font-weight: 600;
+	margin-bottom: 0;
+	border-radius: 0;
+}
+.navbar-brand{
+	height: 40px;
+	padding: 0;
+}
+.navbar-brand>img{
+	width:4em;
+}
+.nav>li>a>img {
+    max-width: 1.5em;
+}
+section{
+	padding: 70px;
+}
+.container2{
+	width: 90%;
+}
+.navbar-right .dropdown-menu{
+	right: auto;
+	left: 0;
+}
+
+.navbar-form{
+	margin-top: 0;
+}
+.modal-content{
+	border-radius: 0;
+}
+.btnadd{
+	border-radius: 0;
+}
+.btn1{
+	margin-right:20px;
+	border-radius: 0;
+}
+.modal-sm{
+	width: 80%;
+}
+.modalShowInfo_Quan{
+	width: 60%;
+}
+.form-group1{
+	border-radius: 0;
+    margin: 2% 20px;
+}
+.form-control{
+	border-radius: 0;
+}
+.lbl{
+	text-align: center;
+}
+
+div #content > input{
+	margin: 5px;
+}
+
+@media (min-width: 768px){
+	.container {
+		width: 768px;
+	}
+}
+
+@media (min-width: 992px){
+	.container {
+		width: 970px;
+	}
+}
+
+@media (min-width: 1200px){
+	.container {
+		width: 1170px;
+	}
+}
+
+div .contentEdit > input{
+	margin: 5px;
+}
+.dropdown-submenu .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -1px;
+}
+.submenu2 .dropdown-menu{
+	top: 50%;
+    left: 100%;
+    margin-top: -1px;
+}
+
+.dropdown-submenu:hover>.dropdown-menu {
+	display: block;
+ }

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Quản Lý Trật Tự Đô Thị</title>
+	<link rel="stylesheet" type="text/css" href="/css/normalize.css">
+	<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/xuphat.css">
+	<script src="/jquery/jquery.js"></script>
+	<script src="/jquery/search.js"></script>
+	<script src="/bootstrap/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+	<div class="container-fluid">
+		<header>
+			<nav class="navbar navbar-default navbar-fixed-top">
+				<div class="container1 container">
+					<!-- Brand and toggle get grouped for better mobile display -->
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+							data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="../quan/"><img src="/images/QLDT.ico"></a>
+					</div>
+
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav navbar-right">
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+									aria-haspopup="true" aria-expanded="false">Quy hoạch <span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<!-- <li><a href="#">Action</a></li>
+									<li><a href="#">Another action</a></li>
+									<li><a href="#">Something else here</a></li>
+									<li role="separator" class="divider"></li>
+									<li><a href="#">Separated link</a></li> -->
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+									aria-haspopup="true" aria-expanded="false">Xây dựng <span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<!-- <li><a href="#">Action</a></li>
+									<li><a href="#">Another action</a></li>
+									<li><a href="#">Something else here</a></li>
+									<li role="separator" class="divider"></li>
+									<li><a href="#">Separated link</a></li> -->
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+								aria-haspopup="true" aria-expanded="false">Trật tự đô thị
+								<span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li class="dropdown-submenu">
+										<a class="test" tabindex="-1" href="#">Trật tự xây dựng<span class="caret"></span></a>
+										<ul class="dropdown-menu">
+										<li><a tabindex="-1" href="../quan/xuphatQuan">Thông tin xử phạt</a></li>
+										<li><a tabindex="-1" href="../vanban">Văn bản</a></li>
+										</ul>
+									</li>
+									<li class="dropdown-submenu submenu2">
+										<a class="test" tabindex="-1" href="#">Trật tự lòng lề đường<span class="caret"></span></a>
+										<ul class="dropdown-menu">
+											<li><a tabindex="-1" href="#">Thông tin xử phạt</a></li>
+											<li><a tabindex="-1" href="#">Văn bản</a></li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+									aria-haspopup="true" aria-expanded="false">Hạ tầng<span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<!-- <li><a href="#">Action</a></li>
+									<li><a href="#">Another action</a></li>
+									<li><a href="#">Something else here</a></li>
+									<li role="separator" class="divider"></li>
+									<li><a href="#">Separated link</a></li> -->
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+									aria-haspopup="true" aria-expanded="false">Văn phòng<span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<!-- <li><a href="#">Action</a></li>
+									<li><a href="#">Another action</a></li>
+									<li><a href="#">Something else here</a></li>
+									<li role="separator" class="divider"></li>
+									<li><a href="#">Separated link</a></li> -->
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+									aria-haspopup="true" aria-expanded="false">Qui định<span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a href="#">Quy định về quy hoạch đô thị</a></li>
+									<li><a href="#">Quy định về xây dựng</a></li>
+									<li><a href="#">Quy định về hạ tầng kỹ thuật</a></li>
+									<li><a href="#">Quy định về xử phạt lĩnh vực xây dựng</a></li>
+									<li><a href="#">Quy định khác</a></li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+									aria-haspopup="true" aria-expanded="false"><img src="/images/login_ico.png">Tài
+									khoản<span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a href="taikhoan">Thông tin tài khoản</a></li>
+									<li><a href="../logout">Đăng xuất</a></li>
+								</ul>
+							</li>
+						</ul>
+					</div><!-- /.navbar-collapse -->
+					<!-- <script>
+						$(document).ready(function(){
+						  $('.dropdown-submenu a.test').on("click", function(e){
+							$(this).next('ul').toggle();
+							e.stopPropagation();
+							e.preventDefault();
+						  });
+						});
+					</script> -->
+				</div><!-- /.container-fluid -->
+			</nav>
+		</header>
+		<section>
+			<div class="container container2">
+				<div class="row">
+					<div class="col-xs-12 col-sm-6 col-md-6 col-md-push-6">
+						<form class="navbar-form navbar-right" role="search" method="POST">
+							<div class="form-group">
+								<input type="text" class="form-control" onkeyup="myFunction()" placeholder="Search"
+									id="search" name="keyword">
+							</div>
+						</form>
+					</div>
+				</div>
+				<table class="table table-hover table-bordered" id="table">
+					<tr>
+						<th>STT</th>
+						<th>Họ và tên</th>
+						<th>CMND</th>
+						<th>Địa chỉ vi phạm</th>
+						<th>Địa chỉ thường trú</th>
+						<th>Phường đảm nhiệm</th>
+						<th>Tình trạng</th>
+						<th></th>
+					</tr>
+					<% i =1%>
+					<%results.forEach(function(rows){%>
+					<tr>
+						<td><%=i++%></td>
+						<td><%=rows.hoten%></td>
+						<td><%=rows.cmnd%></td>
+						<td><%=rows.diachiVP%></td>
+						<td><%=rows.diachiTT%></td>
+						<td><%=rows.nameAc%></td>
+						<td><%=(rows.tinhtrang == 1?"Đã xử lý":"Chưa xử lý")%></td>
+						<td><button type="button" class="btnadd btn btn-danger" data-toggle="modal"
+								data-target="#ModalEdit<%=rows.id%>" id_quan="<%=rows.id%>">Xem</button>
+							<!-- Modal -->
+							<div class="modal fade" id="ModalEdit<%=rows.id%>" role="dialog">
+								<div class="modal-dialog modal-sm modalShowInfo_Quan">
+									<div class="modal-content">
+										<div class="modal-header">
+											<div class="lbl row">
+												<div class="col-xs-6 col-md-6">
+													<h4><b>Thông tin chủ đầu tư</b></h4>
+												</div>
+												<div class="col-xs-6 col-md-6">
+													<h4><b>Thông tin công trình</b></h4>
+												</div>
+											</div>
+										</div>
+										<div class="modal-body">
+											<form role="form" action="duyet" method="POST">
+												<div class="row">
+													<div class="group1 col-xs-6 col-md-6">
+														<div class="form-group">
+															<h5><b>Họ và tên:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=rows.hoten%></h5>
+															<input type="hidden" class="form-control"
+																value="<%=rows.hoten%>" name="hotenD">
+														</div>
+														<div class="form-group">
+															<h5><b>CMND/Thẻ căn cước:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=rows.cmnd%></h5>
+															<input type="hidden" class="form-control"
+																value="<%=rows.cmnd%>" name="cmndD">
+														</div>
+														<div class="form-group">
+															<h5 id="ngayCap<%=rows.id%>"><b>Ngày cấp</b></h5>
+															<input type="hidden" class="form-control"
+																value="<%=rows.ngaycap%>" name="ngaycapD" id="ngaycap<%=rows.id%>">
+														</div>
+														<div class="form-group">
+															
+															<h5><b>Nơi cấp:</b>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&nbsp;<%=rows.diachicap%></h5>
+															<input type="hidden" class="form-control"
+																value="<%=rows.diachicap%>" name="diachicapD">
+														</div>
+														<div class="form-group">
+															
+															<h5><b>Số điện thoại:</b>&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;<%=rows.sdt%></h5>
+															<input type="hidden" class="form-control"
+																value="<%=rows.sdt%>" name="sdtD">
+														</div>
+														<div class="form-group">
+															<h5 id="ngaySinh<%=rows.id%>"><b>Ngày sinh</b></h5>
+															<input type="hidden" class="form-control"
+																value="<%=rows.ngaysinh%>" name="ngaysinhD" id="ngaysinh<%=rows.id%>">
+														</div>
+														<div class="form-group">
+															<%if (rows.gioitinh == 1) {%>
+															<h5><b>Giới tính:</b>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp; Nam</h5>
+															<input type="hidden" class="form-control" value="Nam"
+																name="gioitinhD">
+															<%} else {%>
+															<h5><b>Giới tính:</b>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp; Nữ</h5>
+															<input type="hidden" class="form-control" value="Nữ"
+																name="gioitinhD">
+															<%}%>
+														</div>
+														<div class="form-group">
+															<h5><b>Nghề nghiệp:</b>&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;<%=rows.nghenghiep%></h5>
+															<input type="hidden" class="form-control"
+																value="<%=rows.nghenghiep%>" name="nghenghiepD">
+														</div>
+														<div class="form-group">
+															<h5><b>Quốc tịch:</b>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&nbsp; <%=rows.quoctich%></h5>
+															<input type="hidden" class="form-control"
+																value="<%=rows.quoctich%>" name="quoctichD">
+														</div>
+														<div class="form-group">
+																<h5><b>Địa chỉ:</b>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&nbsp;&nbsp; <%=rows.diachiTT%></h5>
+																<input type="hidden" class="form-control"
+																	value="<%=rows.diachiTT%>" name="diachiD">
+															</div>
+													</div>
+													<div class="group2 col-xs-6 col-md-6">
+														<input type="hidden" class="form-control" value="<%=rows.idVi%>"
+															name="idViD">
+															<div class="form-group">
+																<h5><b>Mã công trình:</b>&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;<%=rows.idVi%></h5>
+															</div>
+														<div class="form-group">
+															<h5><b>Vị trí:</b>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=rows.diachiVP%></h5>
+															<input type="hidden" class="form-control"
+																value="<%=rows.diachiVP%>" name="diachiViD">
+														</div>
+														<div class="form-group">
+																<h5 id="ngayVP<%=rows.id%>"><b>Ngày vi phạm</b></h5>
+																<input type="hidden" class="form-control"
+																	value="<%=rows.thoigianVP%>" name="thoigianVPD" id="ngayvp<%=rows.id%>">
+														</div>
+														<div class="form-group">
+															<h5 id="ngayLBB<%=rows.id%>"><b>Ngày lập biên bản</b></h5>
+															<input type="hidden" class="form-control"
+																value="<%=rows.thoigianLBB%>" name="thoigianLBBD" id="ngaylbb<%=rows.id%>">
+														</div>
+														<div class="form-group">
+															<h5><b>Nội dung xử phạt:</b></h5>
+															<%results_content.forEach(function(rows_content){
+																if (rows_content.id_violation === rows.id){ %>
+																	<h5>&emsp;&emsp;<%=rows_content.noidung%></h5>
+																	<input type="hidden" class="form-control"
+																	value="<%=rows_content.noidung%>" name="noidungVPD">
+															<%}});%>
+														</div>
+														<div class="form-group">
+															<h5><b>Tiền phạt:</b>&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp; <%=rows.tienphat%></h5>
+															<input type="hidden" class="form-control"
+																	value="<%=rows.tienphat%>" name="tienphatD">
+														</div>
+														
+														<script>
+																function convert(str) {
+																	var date = new Date(str),
+																		mnth = ("0" + (date.getMonth()+1)).slice(-2),
+																		day  = ("0" + date.getDate()).slice(-2);
+																	if([day, mnth, date.getFullYear()].join("-") === 'aN-aN-NaN'){
+																		return "<i>Chưa xác nhận ngày/tháng/năm</i>";
+																	}
+																	return [day, mnth, date.getFullYear()].join("/");
+																}
+																var ngayCap = convert('<%=rows.ngaycap%>');
+																var ngaySinh = convert('<%=rows.ngaysinh%>');
+																var ngayVP = convert('<%=rows.thoigianVP%>');
+																var ngayLBB = convert('<%=rows.thoigianLBB%>');
+										
+																document.getElementById("ngayCap<%=rows.id%>").innerHTML = 	"<b>Ngày cấp:</b>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;" + ngayCap;
+																document.getElementById("ngaycap<%=rows.id%>").value = ngayCap;
+																document.getElementById("ngaySinh<%=rows.id%>").innerHTML =	"<b>Ngày sinh:</b>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&nbsp;"+ ngaySinh;
+																document.getElementById("ngaysinh<%=rows.id%>").value = ngaySinh;
+																document.getElementById("ngayVP<%=rows.id%>").innerHTML = 	"<b>Ngày vi phạm:</b>&emsp;&emsp;&emsp;&emsp;&emsp;"+ ngayVP;
+																document.getElementById("ngayvp<%=rows.id%>").value = ngayVP;
+																document.getElementById("ngayLBB<%=rows.id%>").innerHTML = 	"<b>Ngày lập biên bản:</b>&emsp;&emsp;&emsp;"+ ngayLBB;
+																document.getElementById("ngaylbb<%=rows.id%>").value = ngayLBB;
+														</script>
+													</div>
+												</div>
+										</div>
+										<div class="modal-footer">
+											<%if (rows.tinhtrang!= 1) {%>
+											<button type="submit" class="btn1 btn btn-primary" onclick="window.open('/vanban/xem/<%=rows.cmnd%>/<%=rows.idVi%>' ,'_blank')">Duyệt</button>
+											<%} else {%>
+											<button type="submit" disabled class="btn1 btn btn-primary">Duyệt</button>
+											<%}%>
+										</div>						
+									</form>
+									</div>
+								</div>
+							</div>
+						</td>
+					</tr>
+					<%});%>
+				</table>
+			</div>
+		</section>
+	</div>
+</body>
+
+</html>

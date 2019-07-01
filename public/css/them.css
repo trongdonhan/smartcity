@@ -1,0 +1,44 @@
+.btn{
+    margin: 0 15%;
+    width: 10%;
+}
+.container2{
+	width:50%;
+}
+.form-group{
+    width: 70%;
+    margin-bottom: 10px;
+    margin: 2% auto;
+}
+
+@media (min-width: 768px){
+	.container {
+		width: 768px;
+	}
+}
+
+@media (min-width: 992px){
+	.container {
+		width: 970px;
+	}
+}
+
+@media (min-width: 1200px){
+	.container {
+		width: 1170px;
+	}
+}
+.dropdown-submenu .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -1px;
+}
+.submenu2 .dropdown-menu{
+	top: 50%;
+    left: 100%;
+    margin-top: -1px;
+}
+
+.dropdown-submenu:hover>.dropdown-menu {
+	display: block;
+ }

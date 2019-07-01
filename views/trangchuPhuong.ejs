@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Quản Lý Trật Tự Đô Thị</title>
+	<link rel="stylesheet" type="text/css" href="/css/normalize.css">
+	<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/homePhuong.css">
+	<script src="/jquery/jquery.js"></script>
+	<script src="/jquery/search.js"></script>
+	<script src="/bootstrap/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="/css/upload.css" />
+  	<script src="/jquery/upload.js"></script>
+	<script lang="javascript">
+		function ShowContent(id){
+			var a = document.getElementById("dateEdit"+id);
+			var p_list = document.getElementsByClassName("content"+id);
+				
+			if(a.innerHTML === '<span class="glyphicon glyphicon-chevron-down"></span>'){
+				a.innerHTML='<span class="glyphicon glyphicon-chevron-up"></span>';
+				p_list[0].style.display = "block";
+			} 
+			else {
+				a.innerHTML='<span class="glyphicon glyphicon-chevron-down"></span>';
+				p_list[0].style.display= "none";
+			}
+		}
+	</script>
+</head>
+
+<body>
+	<div class="container-fluid">
+		<header>
+			<nav class="navbar navbar-default navbar-fixed-top">
+				<div class="container1 container">
+					<!-- Brand and toggle get grouped for better mobile display -->
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+							data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="../phuong/"><img src="/images/QLDT.ico"></a>
+					</div>
+
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav navbar-right">
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+									aria-haspopup="true" aria-expanded="false">Quy hoạch <span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<!-- <li><a href="#">Action</a></li>
+									<li><a href="#">Another action</a></li>
+									<li><a href="#">Something else here</a></li>
+									<li role="separator" class="divider"></li>
+									<li><a href="#">Separated link</a></li> -->
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+									aria-haspopup="true" aria-expanded="false">Xây dựng <span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<!-- <li><a href="#">Action</a></li>
+									<li><a href="#">Another action</a></li>
+									<li><a href="#">Something else here</a></li>
+									<li role="separator" class="divider"></li>
+									<li><a href="#">Separated link</a></li> -->
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+								aria-haspopup="true" aria-expanded="false">Trật tự đô thị
+								<span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li class="dropdown-submenu">
+										<a class="test" tabindex="-1" href="#">Trật tự xây dựng<span class="caret"></span></a>
+										<ul class="dropdown-menu">
+										<li><a tabindex="-1" href="../phuong/xuphatPhuong">Thông tin xử phạt</a></li>
+										<li><a tabindex="-1" href="../vanban">Văn bản</a></li>
+										</ul>
+									</li>
+									<li class="dropdown-submenu submenu2">
+										<a class="test" tabindex="-1" href="#">Trật tự lòng lề đường<span class="caret"></span></a>
+										<ul class="dropdown-menu">
+											<li><a tabindex="-1" href="#">Thông tin xử phạt</a></li>
+											<li><a tabindex="-1" href="#">Văn bản</a></li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+									aria-haspopup="true" aria-expanded="false"> Hạ tầng<span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<!-- <li><a href="#">Action</a></li>
+									<li><a href="#">Another action</a></li>
+									<li><a href="#">Something else here</a></li>
+									<li role="separator" class="divider"></li>
+									<li><a href="#">Separated link</a></li> -->
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+									aria-haspopup="true" aria-expanded="false">Văn phòng<span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<!-- <li><a href="#">Action</a></li>
+									<li><a href="#">Another action</a></li>
+									<li><a href="#">Something else here</a></li>
+									<li role="separator" class="divider"></li>
+									<li><a href="#">Separated link</a></li> -->
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+									aria-haspopup="true" aria-expanded="false">Qui định<span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a href="#">Quy định về quy hoạch đô thị</a></li>
+									<li><a href="#">Quy định về xây dựng</a></li>
+									<li><a href="#">Quy định về hạ tầng kỹ thuật</a></li>
+									<li><a href="#">Quy định về xử phạt lĩnh vực xây dựng</a></li>
+									<li><a href="#">Quy định khác</a></li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+									aria-haspopup="true" aria-expanded="false"><img src="/images/login_ico.png">Tài
+									khoản<span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a href="">Thông tin tài khoản</a></li>
+									<li><a href="../logout">Đăng xuất</a></li>
+								</ul>
+							</li>
+						</ul>
+					</div><!-- /.navbar-collapse -->
+					<!-- <script>
+						$(document).ready(function(){
+						  $('.dropdown-submenu a.test').on("click", function(e){
+							$(this).next('ul').toggle();
+							e.stopPropagation();
+							e.preventDefault();
+						  });
+						});
+					</script> -->
+				</div><!-- /.container-fluid -->
+			</nav>
+		</header>
+		<section>
+			<div class="container container2">
+				<div class="row">
+					<div class="col-xs-12 col-sm-6 col-md-6">
+						<button type="button" class="btnadd btn btn-primary" data-toggle="modal"
+							data-target="#myModal">Cập nhật CV</button>
+					</div>
+					<!-- Modal -->
+					<div class="modal fade" id="myModal" role="dialog">
+						<div class="modal-dialog modal-sm">
+							<div class="modal-content">
+								<div class="modal-header">
+									<div class="lbl row">
+										<div class="col-xs-12 col-sm-12 col-md-12">
+											<h4><b>PHIẾU THEO DÕI, PHÁT HIỆN CÔNG TRÌNH TRÊN ĐỊA BÀN</b></h4>
+										</div>
+									</div>
+								</div>
+								<!-- //onsubmit="return validateForm() -->
+								<div class="modal-body">
+									<form role="form" action="capnhatPhuong" id="form-CV" method="POST" enctype="multipart/form-data" >
+										<div class="row">
+											<div class=" col-xs-12 col-sm-12 col-md-12">
+												<div class="form-group">
+													<label>Ngày tuần tra</label>
+													<input type="date" class="form-control" name="ngayTT" id="ngayTT">
+													<label style="display: none" id="IdNgayTT"></label>
+												</div>
+												<div class="form-group">
+													<label>Địa chỉ công trình</label>
+													<input type="text" class="form-control" name="diachiCT" id="diachiCT">
+													<label style="display: none" id="IdDiachiCT"></label>
+												</div>
+												<div class="form-group">
+													<label>Hiện trạng công trình</label>
+													<input type="text" class="form-control" name="hientrangCT" id="hientrangCT">
+													<label style="display: none" id="IdHientrangCT"></label>
+												</div>
+												<div class="form-group">
+													<label>Hình ảnh công trình</label>
+													<input id="files" type="file" name="upload" multiple />
+													<div class="row">
+      													<output id="result"></output>
+													</div>
+												</div>
+												<div class="form-group">
+													<label>Cán bộ phát hiện</label>
+													<input type="text" class="form-control" name="canboPH" id="canboPH">
+													<label style="display: none" id="IdCanboPH"></label>
+												</div>
+												<div class="form-group">
+													<label>Người tiếp nhận thông tin</label>
+													<input type="text" class="form-control" name="canboTN" id="canboTN">
+													<label style="display: none" id="IdCanboTN"></label>
+												</div>
+												<div class="form-group">
+													<label>Ghi chú</label>
+													<input type="textarea" class="form-control" name="ghichu">
+												</div>
+											</div>
+										</div>
+								</div>
+								<div class="modal-footer">
+									<button type="submit" class="btn1 btn btn-primary">Lưu</button>
+								</div>
+								</form>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-6">
+						<form class="navbar-form navbar-right" role="search">
+							<div class="form-group">
+								<input type="text" class="form-control" onkeyup="myFunction()" placeholder="Search"
+									id="search">
+							</div>
+						</form>
+					</div>
+					<table class="table table-hover table-bordered" id="table">
+						<tr>
+							<th>STT</th>
+							<th>Ngày tuần tra</th>
+							<th>Địa chỉ công trình</th>
+							<th>Hiện trạng công trình</th>
+							<th>Cán bộ phát hiện</th>
+							<th>Người tiếp nhận thông tin</th>
+							<th>Xác nhận của lãnh đạo phường</th>
+							<th>Ghi chú</th>
+							<th></th>
+						</tr>
+						<%i=1%>
+						<%results.forEach(function(rows){%>
+						<tr>
+							<td><%=i++%></td>
+							<td id="col_dateCV<%=rows.id%>"></td>
+							<td><%=rows.diachiCT%></td>
+							<td><%=rows.hientrangCT%></td>
+							<td><%=rows.canboPH%></td>
+							<td><%=rows.canboTN%></td>
+							<td><%=(rows.xacnhan == 1 ?"Xác nhận":"Chưa xác nhận")%></td>
+							<td><%=rows.ghichu%></td>
+							<td><button type="button" class="btnadd btn btn-danger" data-toggle="modal"
+									data-target="#ModalEdit<%=rows.id%>">Sửa</button></td>
+							<!-- Modal -->
+							<div class="modal fade" id="ModalEdit<%=rows.id%>" role="dialog">
+								<div class="modal-dialog modal-sm">
+									<div class="modal-content">
+										<form role="form" action="suaPhuong" method="POST">
+											<div class="modal-header">
+												<div class="lbl row">
+													<div class="col-xs-12 col-sm-12 col-md-12">
+														<h4><b>PHIẾU THEO DÕI, PHÁT HIỆN CÔNG TRÌNH TRÊN ĐỊA BÀN</b></h4>
+														<h4 id="dateTuanTra<%=rows.id%>"></h4></h4>
+													</div>
+												</div>
+											</div>
+											<div class="modal-body">
+												<div class="row">
+													<div class="col-xs-12 col-sm-12 col-md-12">
+														<input type="hidden" class="form-control" name="id" value="<%=rows.id%>">
+														<div class="form-group">
+															<label>Ngày tuần tra</label>
+															<input type="date" class="form-control" id="dateCV<%=rows.id%>" value="" name="ngayTT" />
+														</div>
+														<div class="form-group">
+															<label>Địa chỉ công trình</label>
+															<input type="text" class="form-control" name="diachiCT"
+																value="<%=rows.diachiCT%>"/>
+														</div>
+														<div class="form-group">
+															<label>Hiện trạng công trình</label>
+															<input type="text" class="form-control" name="hientrangCT"
+																value="<%=rows.hientrangCT%>"/>
+															<input type="hidden" class="form-control" name="hientrangCT"/>
+														</div>
+														<div class="form-group">
+															<label>Hình ảnh công trình</label></br>
+															<iframe src="<%=rows.url%>" width="250" height="150"></iframe>
+														</div>
+														<div class="form-group">
+															<label>Cán bộ phát hiện</label>
+															<input type="text" class="form-control" name="canboPH"
+																value="<%=rows.canboPH%>"/>
+														</div>
+														<div class="form-group">
+															<label>Người tiếp nhận thông tin</label>
+															<input type="text" class="form-control" name="canboTN"
+																value="<%=rows.canboTN%>"/>
+														</div>
+														<div class="form-group">
+															<label>Ghi chú</label>
+															<input type="textarea" class="form-control" name="ghichu"
+																value="<%=rows.ghichu%>">
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="modal-footer">
+												<button type="submit" class="btn1 btn btn-primary">Lưu</button>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</tr>
+						<script>
+								function convert(str) {
+									var arrayDate;
+									var date = new Date(str),
+										mnth = ("0" + (date.getMonth()+1)).slice(-2),
+										day  = ("0" + date.getDate()).slice(-2);
+									if([day, mnth, date.getFullYear()].join("-") === 'aN-aN-NaN'){
+										return "<i>chưa xác nhận ngày/tháng/năm</i>";
+									}
+									return arrayDate = [date.getFullYear(), mnth, day];
+								}
+								//alert(convert("Mon May 27 2019 00:00:00 GMT+0700 (GMT+07:00)"));
+								var dateFormat = convert("<%=rows.ngayTT%>");
+								var dateStr = [dateFormat[2], dateFormat[1], dateFormat[0]].join("/");
+								
+								document.getElementById("col_dateCV<%=rows.id%>").innerHTML = dateStr;
+								document.getElementById("dateCV<%=rows.id%>").value = [dateFormat[0], dateFormat[1], dateFormat[2]].join("-");
+								
+								function validateForm(e){
+									var inputNgayTT = document.getElementById('ngayTT');
+									var inputDiachiCT = document.getElementById('diachiCT');
+									var inputCanboPH = document.getElementById('canboPH');
+									var inputCanboTN = document.getElementById('canboTN');
+									var inputHientrangCT = document.getElementById('hientrangCT');
+
+									if( inputNgayTT.value == '' ){
+										document.getElementById('IdNgayTT').innerHTML="<i>**Bắt buộc nhập thông tin này</i>";
+										document.getElementById('IdNgayTT').style.display = "block";
+										document.getElementById('IdNgayTT').style.color = "red";
+										document.getElementById('IdNgayTT').style.fontSize = "10";
+										return false;
+									}
+									if( inputDiachiCT.value == '' ){
+										document.getElementById('IdDiachiCT').innerHTML="<i>**Bắt buộc nhập thông tin này</i>";
+										document.getElementById('IdDiachiCT').style.display = "block";
+										document.getElementById('IdDiachiCT').style.color = "red";
+										document.getElementById('IdDiachiCT').style.fontSize = "10";
+										return false;
+									}
+									if( inputCanboPH.value == '' ){
+										document.getElementById('IdCanboPH').innerHTML="<i>**Bắt buộc nhập thông tin này</i>";
+										document.getElementById('IdCanboPH').style.display = "block";
+										document.getElementById('IdCanboPH').style.color = "red";
+										document.getElementById('IdCanboPH').style.fontSize = "10";
+										return false;
+									}
+									if( inputCanboTN.value == '' ){
+										document.getElementById('IdCanboTN').innerHTML="<i>**Bắt buộc nhập thông tin này</i>";
+										document.getElementById('IdCanboTN').style.display = "block";
+										document.getElementById('IdCanboTN').style.color = "red";
+										document.getElementById('IdCanboTN').style.fontSize = "10";
+										return false;
+									}
+									if( inputHientrangCT.value == '' ){
+										document.getElementById('IdHientrangCT').innerHTML="<i>**Bắt buộc nhập thông tin này</i>";
+										document.getElementById('IdHientrangCT').style.display = "block";
+										document.getElementById('IdHientrangCT').style.color = "red";
+										document.getElementById('IdHientrangCT').style.fontSize = "10";
+										return false;
+									}
+								}
+						</script>
+						<%});%>
+					</table>
+				</div>
+		</section>
+	</div>
+	
+</body>
+
+</html>

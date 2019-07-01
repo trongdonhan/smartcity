@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+	<script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+    .form-group {
+        margin-top: 15px;
+    }
+    .tabConWrap {
+    width:95%;    
+    position:relative;
+    padding: top 10px;;
+    margin:10px auto 30px;
+    border-bottom:4px solid #39f;
+    text-align:left;
+    }
+    .tabs {
+        width:auto;
+        height:28px;
+        margin:0px 0px;
+        padding:0px 0px;
+    }
+    .tabs li {    
+        margin:0px 2px 0px 0px;
+        padding:0px 0px;
+        display:inline;
+        font:bold 12px Arial,Sans-Serif;
+    }
+    .tabs li a {
+        background-color:#39f; 
+        color:white;
+        padding:7px 10px; 
+        text-decoration:none;
+        border:1px solid #ccc;
+        border-bottom:none;
+        -webkit-border-radius:5px 5px 0px 0px;
+        -moz-border-radius:5px 5px 0px 0px;
+        border-radius:5px 5px 0px 0px;
+    }
+    .tabs .currentTab {
+        background-color:white; 
+        color:#999;
+        position:relative;
+        z-index:7;
+    }
+    .tabContainer {
+        padding:10px;
+        height:700px;
+        background-color:white;
+        border:1px solid #ccc;
+        position:relative;
+        margin-top:-3px;
+        z-index:2;
+        overflow:hidden;
+    }
+    .tabContainer iframe {
+        border:none;
+        width:100%;
+        height:100%;    
+    }
+
+    h2#loading {
+        width:100px;
+        text-align:center;
+        font:bold 11px Arial,Sans-Serif;
+        position:absolute;
+        top:0px;
+        left:50%;
+        margin-left:-50px;
+        padding:5px 0px;
+        background-color:#BC151A;
+        color:white;    
+    }
+    </style>
+    <script>
+        $(function() {
+            var tabs = $('.tabs li a'),
+                tabContents = $('div.tabContainer');
+            
+            tabs.eq(0).addClass('currentTab');
+            
+            tabs.click(function() {
+                tabs.removeClass();
+                $(this).addClass('currentTab');
+                tabContents.animate({height:0}, 'slow')
+                    .find('iframe').attr('src', $(this).attr('href'));
+                $('body').append('<h2 id="loading">Loading...</h2>');
+                return false;    
+            });
+            $('div.tabConWrap iframe').bind("load", function() {
+                tabContents.animate({height:700}, 'slow');
+                $('h2#loading').remove();
+            });
+        });
+    </script>
+    <title><%=results2[0].hoten%></title>
+</head>
+<body>
+    <div class="container">
+		<div class="row">
+			<div class="col-xs-6 col-md-push-2 col-md-6">
+				<div class="form-group">
+					<label>Họ và tên:</label>
+					<label name="hoten"><%=results2[0].hoten%></label>
+				</div>
+				<div class="form-group">
+					<label>CMND:</label>
+					<label name="cmnd"><%=results2[0].cmnd%></label>
+				</div>
+            </div>
+            <div class="col-xs-6 col-md-4"> 
+                <div class="form-group">
+					<label>Mã Đất:</label>
+					<label name="idVi"><%=results2[0].id%></label>
+				</div>
+				<div class="form-group">
+					<label>Địa chỉ đất vi phạm:</label>
+					<label name="diachiVP"><%=results2[0].diachiVP%></label>
+				</div>
+            </div>
+		</div>
+	</div>  
+    <div class="tabConWrap">
+        <ul class="tabs">
+			<li><a href="<%=results[0].url%>">Phân loại hồ sơ</a></li>
+			<li><a href="<%=results[1].url%>">Phiếu kiểm soát</a></li>
+			<li><a href="<%=results[2].url%>">TTXPVPHC</a></li>
+			<li><a href="<%=results[3].url%>">QDXP</a></li>
+			<li><a href="<%=results[4].url%>">TTQDCC</a></li>
+            <li><a href="<%=results[5].url%>">QDCC</a></li>
+        </ul>
+        <div class="tabContainer">		
+            <iframe src="<%=results[0].url%>"></iframe>
+		</div>
+    </div>
+</body>
+</html>
