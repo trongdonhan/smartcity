@@ -2,12 +2,12 @@
 var mysql = require('mysql');
 
 //account Win
-var connection = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "",
-    database: "smartcity"
-});
+// var connection = mysql.createConnection({
+//     host: "localhost",
+//     user: "root",
+//     password: "",
+//     database: "smartcity"
+// });
 
 //Account ubuntu
 // var connection = mysql.createConnection({
@@ -18,7 +18,7 @@ var connection = mysql.createConnection({
 // });
 
 //Connect DataBase fro Heroku
-//var connection = mysql.createConnection(process.env.JAWSDB_URL);
+var connection = mysql.createConnection(process.env.JAWSDB_URL);
 
 
 connection.connect(function(err) {
