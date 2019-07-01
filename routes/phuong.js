@@ -39,20 +39,20 @@ router.post('/capnhatPhuong', urlencodedParser, function (req, res, next) {
     var canboTN = req.body.canboTN;
     var ghichu = req.body.ghichu;
     var form = new formidable.IncomingForm();
-form.parse(req, function (err, fields, files) {
-        if (err) throw err;
-    var sql = "INSERT INTO `work_daily`(`ngayTT`, `diachiCT`, `hientrangCT`, `canboPH`, `canboTN`, `xacnhan`, `ghichu`, `id_acc`) VALUES ('" + ngayTT + "','" + diachiCT + "','" + hientrangCT + "','" + canboPH + "','" + canboTN + "','0','" + ghichu + "','" + req.session.passport.user.username + "')";
+    form.parse(req, function (err, fields, files) {
+            if (err) throw err;
+        var sql = "INSERT INTO `work_daily`(`ngayTT`, `diachiCT`, `hientrangCT`, `canboPH`, `canboTN`, `xacnhan`, `ghichu`, `id_acc`) VALUES ('" + ngayTT + "','" + diachiCT + "','" + hientrangCT + "','" + canboPH + "','" + canboTN + "','0','" + ghichu + "','" + req.session.passport.user.username + "')";
 
-    con.query(sql, function (error, results, field) {
-        if (error) {
-            console.log(error.message);
-            console.log('hey man, lỗi nhé!!!')
-        } else {
-            console.log('success!! ' + results.insertId);
-            upLoadDriveImage(files.upload.path, req.session.passport.user.username , results.insertId);
-        }
+        con.query(sql, function (error, results, field) {
+            if (error) {
+                console.log(error.message);
+                console.log('hey man, lỗi nhé!!!')
+            } else {
+                console.log('success!! ' + results.insertId);
+                upLoadDriveImage(files.upload.path, req.session.passport.user.username , results.insertId);
+            }
+        });
     });
-});
     res.redirect('/phuong/');
 });
 
