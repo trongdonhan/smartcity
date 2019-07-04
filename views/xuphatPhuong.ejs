@@ -11,18 +11,20 @@
 	<script src="/jquery/jquery.js"></script>
 	<script src="/jquery/search.js"></script>
 	<script src="/bootstrap/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="/css/upload.css" />
+	<script src="/jquery/upload.js"></script>
 	<script lang="javascript">
-		function ShowContent(content,dateEdit,id){
-			var a = document.getElementById(dateEdit+id);
-			var p_list = document.getElementsByClassName(content+id);
-				
-			if(a.innerHTML === '<span class="glyphicon glyphicon-chevron-down"></span>'){
-				a.innerHTML='<span class="glyphicon glyphicon-chevron-up"></span>';
+		function ShowContent(content, dateEdit, id) {
+			var a = document.getElementById(dateEdit + id);
+			var p_list = document.getElementsByClassName(content + id);
+
+			if (a.innerHTML === '<span class="glyphicon glyphicon-chevron-down"></span>') {
+				a.innerHTML = '<span class="glyphicon glyphicon-chevron-up"></span>';
 				p_list[0].style.display = "block";
-			} 
+			}
 			else {
-				a.innerHTML='<span class="glyphicon glyphicon-chevron-down"></span>';
-				p_list[0].style.display= "none";
+				a.innerHTML = '<span class="glyphicon glyphicon-chevron-down"></span>';
+				p_list[0].style.display = "none";
 			}
 		}
 	</script>
@@ -72,18 +74,21 @@
 							</li>
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-								aria-haspopup="true" aria-expanded="false">Trật tự đô thị
-								<span class="caret"></span></a>
+									aria-haspopup="true" aria-expanded="false">Trật tự đô thị
+									<span class="caret"></span></a>
 								<ul class="dropdown-menu">
 									<li class="dropdown-submenu">
-										<a class="test" tabindex="-1" href="#">Trật tự xây dựng<span class="caret"></span></a>
+										<a class="test" tabindex="-1" href="#">Trật tự xây dựng<span
+												class="caret"></span></a>
 										<ul class="dropdown-menu">
-										<li><a tabindex="-1" href="../phuong/xuphatPhuong">Thông tin xử phạt</a></li>
-										<li><a tabindex="-1" href="../vanban">Văn bản</a></li>
+											<li><a tabindex="-1" href="../phuong/xuphatPhuong">Thông tin xử phạt</a>
+											</li>
+											<li><a tabindex="-1" href="../vanban">Văn bản</a></li>
 										</ul>
 									</li>
 									<li class="dropdown-submenu submenu2">
-										<a class="test" tabindex="-1" href="#">Trật tự lòng lề đường<span class="caret"></span></a>
+										<a class="test" tabindex="-1" href="#">Trật tự lòng lề đường<span
+												class="caret"></span></a>
 										<ul class="dropdown-menu">
 											<li><a tabindex="-1" href="#">Thông tin xử phạt</a></li>
 											<li><a tabindex="-1" href="#">Văn bản</a></li>
@@ -169,12 +174,13 @@
 									</div>
 								</div>
 								<div class="modal-body">
-									<form role="form" action="themvipham" method="POST" onsubmit="return validateForm()">
+									<form role="form" action="themvipham" method="POST"
+										onsubmit="return validateForm()">
 										<div class="row">
 											<div class="group1 col-md-6">
 												<div class="form-group">
 													<label>Họ và tên</label>
-													<input id="hoten" name="hoten" type="text" class="form-control"/>
+													<input id="hoten" name="hoten" type="text" class="form-control" />
 													<label style="display: none" id="IdHoten"></label>
 												</div>
 												<div class="form-group">
@@ -208,200 +214,230 @@
 												</div>
 												<div class="form-group">
 													<label>Giới tính</label>
-													<input name="gioitinh" type="radio" value=1
-														id="gioitinh_nam" />Nam
+													<input name="gioitinh" type="radio" value=1 id="gioitinh_nam" />Nam
 													<input name="gioitinh" type="radio" value=0 id="gioitinh_nu" />Nữ
 													<label style="display: none" id="IdGioitinh"></label>
 												</div>
 												<div class="form-group">
-													<label>Địa chỉ</label>
-													<input type="text" class="form-control" id="diachiTT" name="diachiTT">
+													<label>Địa chỉ thường trú</label>
+													<input type="text" class="form-control" id="diachiTT"
+														name="diachiTT">
 													<label style="display: none" id="IdDiachiTT"></label>
 												</div>
+
 												<div class="form-group">
 													<label>Nghề nghiệp</label>
 													<input type="text" class="form-control" id="nghenghiep"
 														name="nghenghiep">
 												</div>
-												<div class="form-group">
-													<label>Quốc tịch</label>
-													<input type="textarea" class="form-control" id="quoctich"
-														name="quoctich">
-													<label style="display: none" id="IdQuoctich"></label>
-												</div>
 											</div>
 											<div class="group2 col-md-6">
 												<div class="form-group">
-													<label>Vị trí</label>
-													<input type="text" class="form-control" name="diachiVP" id="diachiVP">
+													<label>Số biên bản</label>
+													<input type="text" class="form-control" name="soBB" id="soBB">
+													<label style="display: none" id="IdsoBB"></label>
+												</div>
+												<div class="form-group">
+													<label>Địa chỉ</label>
+													<input type="text" class="form-control" name="diachiVP"
+														id="diachiVP">
 													<label style="display: none" id="IdDiachiVP"></label>
 												</div>
 												<div class="form-group">
-													<label>Ngày vi phạm</label>
-													<input type="date" class="form-control" name="thoigianVP" id="thoigianVP">
+													<label>Hình ảnh công trình</label>
+													<input id="files" type="file" name="upload" disabled />
+													<div class="row">
+														<output id="result"></output>
+													</div>
+												</div>
+												<div class="form-group">
+													<label>Thời điểm vi phạm</label>
+													<input type="date" class="form-control" name="thoigianVP"
+														id="thoigianVP">
 													<label style="display: none" id="IdThoigianVP"></label>
 												</div>
 												<div class="form-group">
+													<label>Giờ lập biên bản</label>
+													<input type="time" class="form-control" name="gioLBB" id="gioLBB" />
+													<label style="display: none" id="IdgioLBB"></label>
+												</div>
+												<div class="form-group">
 													<label>Ngày lập biên bản</label>
-													<input type="date" class="form-control" name="thoigianLBB" id="thoigianLBB" />
+													<input type="date" class="form-control" name="thoigianLBB"
+														id="thoigianLBB" />
 													<label style="display: none" id="IdThoigianLBB"></label>
 												</div>
+
 												<div class="form-group">
 													<label>Nội dung xử phạt</label>
 													<div id="content">
-														<input type="text" class="form-control" name="noidungVP" id="noidungVP"/>
+														<input type="text" class="form-control" name="noidungVP"
+															id="noidungVP" />
 														<label style="display: none" id="IdNoidungVP"></label>
 													</div>
-													<a id="btn-append"><span class="glyphicon glyphicon-plus"></span> Thêm nội dung</a>
+													<a id="btn-append"><span class="glyphicon glyphicon-plus"></span>
+														Thêm nội dung</a>
 												</div>
 												<div class="form-group">
-													<label>Số tiền phạt</label>
-													<input type="text" class="form-control" name="tienphat" id="tienphat">
+													<label>Hiện trạng công trình</label>
+													<input type="text" class="form-control" name="hientrangCT"
+														id="hientrangCT" />
+													<label style="display: none" id="IdhientrangCT"></label>
+												</div>
+												<div class="form-group">
+													<div class="row">
+														<div class="col-xs-3 col-md-3">
+															<label>Số tiền phạt</label>
+														</div>
+														<div class="col-xs-7 col-md-7">
+															<input name="tienphat" id="Tienphat_0" type="radio"
+																value=0 /> 25.000.000 (Hai mươi lăm triệu đồng)</br>
+															<input name="tienphat" id="Tienphat_1" type="radio"
+																value=1 /> 35.000.000 (Ba mươi lăm triệu đồng)</br>
+															<input name="tienphat" id="Tienphat_2" type="radio"
+																value=2 /> 75.000.000 (Bảy mười lăm triệu đồng)</br>
+															<label style="display: none" id="IdTienphat"></label>
+														</div>
+													</div>
 												</div>
 											</div>
 										</div>
 										<script language="javascript">
-												// Lấy button
-												var button = document.getElementById("btn-append");
-												
-												// Thêm sự kiện click cho button
-												button.addEventListener("click", function(){
-													var div = document.getElementById("content").children;
-													
-													// Tạo mới một thẻ h1
-													var input = document.createElement("input");
+											// Lấy button
+											var button = document.getElementById("btn-append");
 
-													// Thêm nội dung HTML vào thẻ h1
-													input.type="text";
-													input.name = "noidungVP";
-													input.className="form-control";
-													// Đưa thẻ h1 vào trong thẻ div có id=content
-													document.getElementById("content").appendChild(input);
-												});
+											// Thêm sự kiện click cho button
+											button.addEventListener("click", function () {
+												var div = document.getElementById("content").children;
 
-												function validateForm(e){
-														var inputHoten = document.getElementById('hoten');
-														var inputCMND = document.getElementById('cmnd');
-														var inputNgaycap = document.getElementById('ngaycap');
-														var inputNoicap = document.getElementById('noicap');
-														var inputSDT = document.getElementById('sdt');
-														var inputNgaysinh = document.getElementById('ngaysinh');
-														var inputGioitinh_nam = document.getElementById('gioitinh_nam');
-														var inputGioitinh_nu = document.getElementById('gioitinh_nu');
-														var inputDiachiTT = document.getElementById('diachiTT');
-														var inputQuoctich = document.getElementById('quoctich');
-														var inputDiachiVP = document.getElementById('diachiVP');
-														var inputThoigianVP = document.getElementById('thoigianVP');
-														var inputThoigianLBB = document.getElementById('thoigianVP');
-														var inputNoidungVP = document.getElementById('noidungVP');
-														var inputTienphat = document.getElementById('tienphat');
+												// Tạo mới một thẻ h1
+												var input = document.createElement("input");
 
-														if( inputHoten.value == '' ){
-															document.getElementById('IdHoten').innerHTML="<i>**Bắt buộc nhập thông tin này</i>";
-															document.getElementById('IdHoten').style.display = "block";
-															document.getElementById('IdHoten').style.color = "red";
-															document.getElementById('IdHoten').style.fontSize = "10";
-															return false;
-														}
-														if( inputCMND.value == '' ){
-															document.getElementById('IdCMND').innerHTML="<i>**Bắt buộc nhập thông tin này</i>";
-															document.getElementById('IdCMND').style.display = "block";
-															document.getElementById('IdCMND').style.color = "red";
-															document.getElementById('IdCMND').style.fontSize = "10";
-															return false;
-														}
-														if( inputNgaycap.value == '' ){
-															document.getElementById('IdNgaycap').innerHTML="<i>**Bắt buộc nhập thông tin này</i>";
-															document.getElementById('IdNgaycap').style.display = "block";
-															document.getElementById('IdNgaycap').style.color = "red";
-															document.getElementById('IdNgaycap').style.fontSize = "10";
-															return false;
-														}
-														if( inputNoicap.value == '' ){
-															document.getElementById('IdNoicap').innerHTML="<i>**Bắt buộc nhập thông tin này</i>";
-															document.getElementById('IdNoicap').style.display = "block";
-															document.getElementById('IdNoicap').style.color = "red";
-															document.getElementById('IdNoicap').style.fontSize = "10";
-															return false;
-														}
-														if( inputSDT.value == '' ){
-															document.getElementById('IdSDT').innerHTML="<i>**Bắt buộc nhập thông tin này</i>";
-															document.getElementById('IdSDT').style.display = "block";
-															document.getElementById('IdSDT').style.color = "red";
-															document.getElementById('IdSDT').style.fontSize = "10";
-															return false;
-														}
-														if( inputNgaysinh.value == '' ){
-															document.getElementById('IdNgaysinh').innerHTML="<i>**Bắt buộc nhập thông tin này</i>";
-															document.getElementById('IdNgaysinh').style.display = "block";
-															document.getElementById('IdNgaysinh').style.color = "red";
-															document.getElementById('IdNgaysinh').style.fontSize = "10";
-															return false;
-														}
-														if( inputGioitinh_nam.checked == false && inputGioitinh_nu.checked == false){
-															document.getElementById('IdGioitinh').innerHTML="<i>**Bắt buộc nhập thông tin này</i>";
-															document.getElementById('IdGioitinh').style.display = "block";
-															document.getElementById('IdGioitinh').style.color = "red";
-															document.getElementById('IdGioitinh').style.fontSize = "10";
-															return false;
-														}
-														if( inputDiachiTT.value == '' ){
-															document.getElementById('IdDiachiTT').innerHTML="<i>**Bắt buộc nhập thông tin này</i>";
-															document.getElementById('IdDiachiTT').style.display = "block";
-															document.getElementById('IdDiachiTT').style.color = "red";
-															document.getElementById('IdDiachiTT').style.fontSize = "10";
-															return false;
-														}
-														if( inputQuoctich.value == '' ){
-															document.getElementById('IdQuoctich').innerHTML="<i>**Bắt buộc nhập thông tin này</i>";
-															document.getElementById('IdQuoctich').style.display = "block";
-															document.getElementById('IdQuoctich').style.color = "red";
-															document.getElementById('IdQuoctich').style.fontSize = "10";
-															return false;
-														}
-														if( inputDiachiVP.value == '' ){
-															document.getElementById('IdDiachiVP').innerHTML="<i>**Bắt buộc nhập thông tin này</i>";
-															document.getElementById('IdDiachiVP').style.display = "block";
-															document.getElementById('IdDiachiVP').style.color = "red";
-															document.getElementById('IdDiachiVP').style.fontSize = "10";
-															return false;
-														}
-														if( inputThoigianVP.value == '' ){
-															document.getElementById('IdThoigianVP').innerHTML="<i>**Bắt buộc nhập thông tin này</i>";
-															document.getElementById('IdThoigianVP').style.display = "block";
-															document.getElementById('IdThoigianVP').style.color = "red";
-															document.getElementById('IdThoigianVP').style.fontSize = "10";
-															return false;
-														}
-														if( inputThoigianLBB.value == ''){
-															document.getElementById('IdThoigianLBB').innerHTML="<i>**Bắt buộc nhập thông tin này</i>";
-															document.getElementById('IdThoigianLBB').style.display = "block";
-															document.getElementById('IdThoigianLBB').style.color = "red";
-															document.getElementById('IdThoigianLBB').style.fontSize = "10";
-															return false;
-														}
-														if( inputDiachiTT.value == '' ){
-															document.getElementById('IdDiachiTT').innerHTML="<i>**Bắt buộc nhập thông tin này</i>";
-															document.getElementById('IdDiachiTT').style.display = "block";
-															document.getElementById('IdDiachiTT').style.color = "red";
-															document.getElementById('IdDiachiTT').style.fontSize = "10";
-															return false;
-														}
-														if( inputNoidungVP.value == '' ){
-															document.getElementById('IdNoidungVP').innerHTML="<i>**Bắt buộc nhập thông tin này</i>";
-															document.getElementById('IdNoidungVP').style.display = "block";
-															document.getElementById('IdNoidungVP').style.color = "red";
-															document.getElementById('IdNoidungVP').style.fontSize = "10";
-															return false;
-														}
-														if( inputTienphat.value == '' ){
-															document.getElementById('IdTienphat').innerHTML="<i>**Bắt buộc nhập thông tin này</i>";
-															document.getElementById('IdTienphat').style.display = "block";
-															document.getElementById('IdTienphat').style.color = "red";
-															document.getElementById('IdTienphat').style.fontSize = "10";
-															return false;
-														}
-													}
+												// Thêm nội dung HTML vào thẻ h1
+												input.type = "text";
+												input.name = "noidungVP";
+												input.className = "form-control";
+												// Đưa thẻ h1 vào trong thẻ div có id=content
+												document.getElementById("content").appendChild(input);
+											});
+
+											function validateForm(e) {
+												var inputHoten = document.getElementById('hoten');
+												var inputCMND = document.getElementById('cmnd');
+												var inputNgaycap = document.getElementById('ngaycap');
+												var inputNoicap = document.getElementById('noicap');
+												var inputNgaysinh = document.getElementById('ngaysinh');
+												var inputGioitinh_nam = document.getElementById('gioitinh_nam');
+												var inputGioitinh_nu = document.getElementById('gioitinh_nu');
+												var inputDiachiTT = document.getElementById('diachiTT');
+												var inputQuoctich = document.getElementById('quoctich');
+												var inputDiachiVP = document.getElementById('diachiVP');
+												var inputThoigianVP = document.getElementById('thoigianVP');
+												var inputThoigianLBB = document.getElementById('thoigianVP');
+												var inputNoidungVP = document.getElementById('noidungVP');
+												var inputTienphat_0 = document.getElementById('Tienphat_0');
+												var inputTienphat_1 = document.getElementById('Tienphat_1');
+												var inputTienphat_2 = document.getElementById('Tienphat_2');
+
+												if (inputHoten.value == '') {
+													document.getElementById('IdHoten').innerHTML = "<i>**Bắt buộc nhập thông tin này</i>";
+													document.getElementById('IdHoten').style.display = "block";
+													document.getElementById('IdHoten').style.color = "red";
+													document.getElementById('IdHoten').style.fontSize = "10";
+													return false;
+												}
+												if (inputCMND.value == '') {
+													document.getElementById('IdCMND').innerHTML = "<i>**Bắt buộc nhập thông tin này</i>";
+													document.getElementById('IdCMND').style.display = "block";
+													document.getElementById('IdCMND').style.color = "red";
+													document.getElementById('IdCMND').style.fontSize = "10";
+													return false;
+												}
+												if (inputNgaycap.value == '') {
+													document.getElementById('IdNgaycap').innerHTML = "<i>**Bắt buộc nhập thông tin này</i>";
+													document.getElementById('IdNgaycap').style.display = "block";
+													document.getElementById('IdNgaycap').style.color = "red";
+													document.getElementById('IdNgaycap').style.fontSize = "10";
+													return false;
+												}
+												if (inputNoicap.value == '') {
+													document.getElementById('IdNoicap').innerHTML = "<i>**Bắt buộc nhập thông tin này</i>";
+													document.getElementById('IdNoicap').style.display = "block";
+													document.getElementById('IdNoicap').style.color = "red";
+													document.getElementById('IdNoicap').style.fontSize = "10";
+													return false;
+												}
+												if (inputNgaysinh.value == '') {
+													document.getElementById('IdNgaysinh').innerHTML = "<i>**Bắt buộc nhập thông tin này</i>";
+													document.getElementById('IdNgaysinh').style.display = "block";
+													document.getElementById('IdNgaysinh').style.color = "red";
+													document.getElementById('IdNgaysinh').style.fontSize = "10";
+													return false;
+												}
+												if (inputGioitinh_nam.checked == false && inputGioitinh_nu.checked == false) {
+													document.getElementById('IdGioitinh').innerHTML = "<i>**Bắt buộc nhập thông tin này</i>";
+													document.getElementById('IdGioitinh').style.display = "block";
+													document.getElementById('IdGioitinh').style.color = "red";
+													document.getElementById('IdGioitinh').style.fontSize = "10";
+													return false;
+												}
+												if (inputDiachiTT.value == '') {
+													document.getElementById('IdDiachiTT').innerHTML = "<i>**Bắt buộc nhập thông tin này</i>";
+													document.getElementById('IdDiachiTT').style.display = "block";
+													document.getElementById('IdDiachiTT').style.color = "red";
+													document.getElementById('IdDiachiTT').style.fontSize = "10";
+													return false;
+												}
+												if (inputQuoctich.value == '') {
+													document.getElementById('IdQuoctich').innerHTML = "<i>**Bắt buộc nhập thông tin này</i>";
+													document.getElementById('IdQuoctich').style.display = "block";
+													document.getElementById('IdQuoctich').style.color = "red";
+													document.getElementById('IdQuoctich').style.fontSize = "10";
+													return false;
+												}
+												if (inputDiachiVP.value == '') {
+													document.getElementById('IdDiachiVP').innerHTML = "<i>**Bắt buộc nhập thông tin này</i>";
+													document.getElementById('IdDiachiVP').style.display = "block";
+													document.getElementById('IdDiachiVP').style.color = "red";
+													document.getElementById('IdDiachiVP').style.fontSize = "10";
+													return false;
+												}
+												if (inputThoigianVP.value == '') {
+													document.getElementById('IdThoigianVP').innerHTML = "<i>**Bắt buộc nhập thông tin này</i>";
+													document.getElementById('IdThoigianVP').style.display = "block";
+													document.getElementById('IdThoigianVP').style.color = "red";
+													document.getElementById('IdThoigianVP').style.fontSize = "10";
+													return false;
+												}
+												if (inputThoigianLBB.value == '') {
+													document.getElementById('IdThoigianLBB').innerHTML = "<i>**Bắt buộc nhập thông tin này</i>";
+													document.getElementById('IdThoigianLBB').style.display = "block";
+													document.getElementById('IdThoigianLBB').style.color = "red";
+													document.getElementById('IdThoigianLBB').style.fontSize = "10";
+													return false;
+												}
+												if (inputDiachiTT.value == '') {
+													document.getElementById('IdDiachiTT').innerHTML = "<i>**Bắt buộc nhập thông tin này</i>";
+													document.getElementById('IdDiachiTT').style.display = "block";
+													document.getElementById('IdDiachiTT').style.color = "red";
+													document.getElementById('IdDiachiTT').style.fontSize = "10";
+													return false;
+												}
+												if (inputNoidungVP.value == '') {
+													document.getElementById('IdNoidungVP').innerHTML = "<i>**Bắt buộc nhập thông tin này</i>";
+													document.getElementById('IdNoidungVP').style.display = "block";
+													document.getElementById('IdNoidungVP').style.color = "red";
+													document.getElementById('IdNoidungVP').style.fontSize = "10";
+													return false;
+												}
+												if (inputTienphat_0.checked == false && inputTienphat_1.checked == false && inputTienphat_2.checked == false) {
+													document.getElementById('IdTienphat').innerHTML = "<i>**Bắt buộc nhập thông tin này</i>";
+													document.getElementById('IdTienphat').style.display = "block";
+													document.getElementById('IdTienphat').style.color = "red";
+													document.getElementById('IdTienphat').style.fontSize = "10";
+													return false;
+												}
+											}
 										</script>
 								</div>
 								<div class="modal-footer">
@@ -442,7 +478,7 @@
 							<td><%=(rows.tinhtrang == 1?"Đã xử lý":"Chưa xử lý")%></td>
 							<td><button type="button" class="btnadd btn btn-danger" data-toggle="modal"
 									data-target="#ModalEdit<%=rows.id%>" class="view_data">Sửa</button></td>
-									
+
 							<!-- Modal -->
 							<div class="modal fade" id="ModalEdit<%=rows.id%>" role="dialog">
 								<div class="modal-dialog modal-sm">
@@ -468,14 +504,14 @@
 														</div>
 														<div class="form-group">
 															<label>CMND/Thẻ căn cước</label>
-															<h5> &nbsp;&nbsp;<%=rows.cmnd%></h5> 
-															<input type="hidden" class="form-control"
-																value="<%=rows.cmnd%>" name="cmnd">
+															<input type="text" class="form-control"
+																value="<%=rows.cmnd%>" name="cmnd" readonly>
 														</div>
 														<div class="form-group">
 															<label>Ngày cấp</label>
 															<!-- <h5 id="ngayCap<%=rows.id%>" class="form-control"></h5> -->
-															<input type="date" class="form-control" id="ngaycap<%=rows.id%>" name="ngaycap">
+															<input type="date" class="form-control"
+																id="ngaycap<%=rows.id%>" name="ngaycap">
 														</div>
 														<div class="form-group">
 															<label>Nơi cấp</label>
@@ -489,21 +525,23 @@
 														</div>
 														<div class="form-group">
 															<label>Ngày sinh</label>
-															<input type="date" class="form-control contentNS<%=rows.id%>" id="ngaysinh<%=rows.id%>" name="ngaysinh">
+															<input type="date"
+																class="form-control contentNS<%=rows.id%>"
+																id="ngaysinh<%=rows.id%>" name="ngaysinh">
 														</div>
 														<div class="form-group">
 															<label>Giới tính</label>
 															<% if (rows.gioitinh == 1) {%>
-															<input name="gioitinh" type="radio" value= 1 checked/>Nam
-															<input name="gioitinh" type="radio" value= 0 />Nữ
+															<input name="gioitinh" type="radio" value=1 checked />Nam
+															<input name="gioitinh" type="radio" value=0 />Nữ
 															<%} else {%>
-															<input name="gioitinh" type="radio" value= 1 />Nam
-															<input name="gioitinh" type="radio" value= 0 checked/>Nữ
+															<input name="gioitinh" type="radio" value=1 />Nam
+															<input name="gioitinh" type="radio" value=0 checked />Nữ
 															<%}%>
 														</div>
 
 														<div class="form-group">
-															<label>Địa chỉ</label>
+															<label>Địa chỉ thường trú</label>
 															<input type="text" class="form-control"
 																value="<%=rows.diachiTT%>" name="diachiTT">
 														</div>
@@ -514,82 +552,153 @@
 														</div>
 														<div class="form-group">
 															<label>Quốc tịch</label>
-															<input type="textarea" class="form-control"
-																value="<%=rows.quoctich%>" name="quoctich">
+															<input type="text" class="form-control"
+																value="<%=rows.quoctich%>" name="quoctich" readonly>
 														</div>
 													</div>
 													<div class="group2 col-md-6">
 														<div class="form-group">
-																<h5><b>Mã công trình:</b></h5>
-																<h5>&nbsp;&nbsp;<%=rows.id%></h5>
-																<input type="hidden" class="form-control"
-																value="<%=rows.id%>" name="idVP">
-															<label>Vị trí</label>
+															<label>Mã công trình</label>
+															<!-- <h5>&nbsp;&nbsp;<%=rows.id%></h5> -->
+															<input type="text" class="form-control" value="<%=rows.id%>"
+																name="idVP" readonly>
+															<label>Số biên bản</label>
+															<input type="text" class="form-control"
+																value="<%=rows.soBB%>" name="soBB">
+															<label>Địa chỉ</label>
 															<input type="text" class="form-control"
 																value="<%=rows.diachiVP%>" name="diachiVP">
 														</div>
 														<div class="form-group">
-															<label>Ngày vi phạm</label>
-															<input type="date" class="form-control contentVP<%=rows.id%>" id="ngayvp<%=rows.id%>" name="thoigianVP">
+															<label>Hình ảnh công trình</label></br>
+															<!-- <iframe src="<%=rows.url%>" width="250"
+																height="150"></iframe> -->
+															<label style="color: red">Hiện không có hình ảnh</label>
+														</div>
+														<div class="form-group">
+															<label>Thời điểm vi phạm</label>
+															<input type="date"
+																class="form-control contentVP<%=rows.id%>"
+																id="ngayvp<%=rows.id%>" name="thoigianVP">
+														</div>
+														<div class="form-group">
+															<label>Giờ lập biên bản</label>
+															<input type="time"
+																class="form-control"
+																value="<%=rows.gioLBB%>" name="gioLBB">
 														</div>
 														<div class="form-group">
 															<label>Ngày lập biên bản</label>
-															<input type="date" class="form-control contentLBB<%=rows.id%>"
+															<input type="date"
+																class="form-control contentLBB<%=rows.id%>"
 																id="ngaylbb<%=rows.id%>" name="thoigianLBB">
 														</div>
-														
+
 														<div class="form-group">
 
-																<label>Nội dung xử phạt</label>
-																<%results_content.forEach(function(rows_content){
+															<label>Nội dung xử phạt</label>
+															<%results_content.forEach(function(rows_content){
 																	if (rows_content.id_violation === rows.id){ %>
-																		<input type="text" class="form-control"
-																		value="<%=rows_content.noidung%>" name="noidungVP" class="contentEdit">
-																		<input type="hidden" class="form-control"
-																		value="<%=rows_content.id%>" name="idcontent">
-												
-																<%}});%>
+															<input type="text" class="form-control"
+																value="<%=rows_content.noidung%>" name="noidungVP"
+																class="contentEdit">
+															<input type="hidden" class="form-control"
+																value="<%=rows_content.id%>" name="idcontent">
+
+															<%}});%>
 														</div>
-														
 														<div class="form-group">
-															<label>Số tiền phạt</label>
-															<input type="text" class="form-control" value="<%=rows.tienphat%>" name="tienphat">
+																<label>Hiện trạng công trình</label>
+																<input type="text"
+																	class="form-control"
+																	value="<%=rows.hientrangCT%>" name="hientrangCT">
+															</div>
+														<div class="form-group">
+															<div class="row">
+																<div class="col-xs-3 col-md-3">
+																	<label>Số tiền phạt</label>
+																</div>
+																<div class="col-xs-7 col-md-7">
+																	<% if (rows.tienphat == 0) {%>
+																	<input name="tienphat" type="radio" value=0
+																		checked /> 25.000.000 (Hai mươi lăm triệu
+																	đồng)</br>
+																	<input name="tienphat" type="radio" value=1 />
+																	35.000.000 (Ba mươi lăm triệu đồng)</br>
+																	<input name="tienphat" type="radio" value=2 />
+																	75.000.000 (Bảy mười lăm triệu đồng)</br>
+																	<%} else if(rows.tienphat == 1) {%>
+																	<input name="tienphat" type="radio" value=0 />
+																	25.000.000 (Hai mươi lăm triệu đồng)</br>
+																	<input name="tienphat" type="radio" value=1
+																		checked /> 35.000.000 (Ba mươi lăm triệu
+																	đồng)</br>
+																	<input name="tienphat" type="radio" value=2 />
+																	75.000.000 (Bảy mười lăm triệu đồng)</br>
+																	<%} else {%>
+																	<input name="tienphat" type="radio" value=0 />
+																	25.000.000 (Hai mươi lăm triệu đồng)</br>
+																	<input name="tienphat" type="radio" value=1 />
+																	35.000.000 (Ba mươi lăm triệu đồng)</br>
+																	<input name="tienphat" type="radio" value=2
+																		checked /> 75.000.000 (Bảy mười lăm triệu
+																	đồng)</br>
+																	<%}%>
+																</div>
+															</div>
 														</div>
 
 														<script>
-															
 															function convert(str) {
 																var date = new Date(str),
-																	mnth = ("0" + (date.getMonth()+1)).slice(-2),
-																	day  = ("0" + date.getDate()).slice(-2);
+																	mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+																	day = ("0" + date.getDate()).slice(-2);
+																return [date.getFullYear(), mnth, day].join("-");
+															}
+															function convertDayYear(str) {
+																var date = new Date(str),
+																	mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+																	day = ("0" + date.getDate()).slice(-2);
 																return [date.getFullYear(), mnth, day].join("-");
 															}
 															var ngayCap = convert('<%=rows.ngaycap%>');
 															var ngaySinh = convert('<%=rows.ngaysinh%>');
 															var ngayVP = convert('<%=rows.thoigianVP%>');
 															var ngayLBB = convert('<%=rows.thoigianLBB%>');
-								
-															//document.getElementById("ngayCap<%=rows.id%>").innerHTML = 	ngayCap;
-															document.getElementById("ngaycap<%=rows.id%>").value = ngayCap;
-															//document.getElementById("ngaySinh<%=rows.id%>").innerHTML =	ngaySinh;
-															document.getElementById("ngaysinh<%=rows.id%>").value =	ngaySinh;
-															//document.getElementById("ngayVP<%=rows.id%>").innerHTML = 	ngayVP;
-															document.getElementById("ngayvp<%=rows.id%>").value = 	ngayVP;
-															//document.getElementById("ngayLBB<%=rows.id%>").innerHTML = 	ngayLBB;
-															document.getElementById("ngaylbb<%=rows.id%>").value = 	ngayLBB;
-													</script>
-													</div>
-												</div>
+
+															//document.getElementById("ngayCap<%=rows.id%>").innerHTML
+
+															document.getElementById("ngaycap<%=rows.id%>").value
+																= ngayCap;
+															//document.getElementById("ngaySinh<%=rows.id%>").innerHTML=
+															ngaySinh;
+															document.getElementById("ngaysinh<%=rows.id%>").value
+																=
+																ngaySinh;
+															//document.getElementById("ngayVP<%=rows.id%>").innerHTML
+
+															document.getElementById("ngayvp<%=rows.id%>").value
+																=
+																ngayVP;
+															//document.getElementById("ngayLBB<%=rows.id%>").innerHTML
+
+															document.getElementById("ngaylbb<%=rows.id%>").value
+																=
+																ngayLBB;
+														</script>
+																</div>
+															</div>
+														</div>
+														<div class="modal-footer">
+															<button type="submit"
+																class="btn1 btn btn-primary">Lưu</button>
+														</div>
+											</form>
 										</div>
-										<div class="modal-footer">
-											<button type="submit" class="btn1 btn btn-primary">Lưu</button>
-										</div>
-										</form>
 									</div>
 								</div>
-							</div>
-						</tr>						
-					<%});%>
+						</tr>
+						<%});%>
 					</table>
 				</div>
 		</section>

@@ -169,7 +169,7 @@
 								</div>
 								<!-- //onsubmit="return validateForm() -->
 								<div class="modal-body">
-									<form role="form" action="capnhatPhuong" id="form-CV" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
+									<form role="form" action="capnhatPhuong" id="form-CV" method="POST" onsubmit="return validateForm()">
 										<div class="row">
 											<div class=" col-xs-12 col-sm-12 col-md-12">
 												<div class="form-group">
@@ -189,7 +189,7 @@
 												</div>
 												<div class="form-group">
 													<label>Hình ảnh công trình</label>
-													<input id="files" type="file" name="upload" />
+													<input id="files" type="file" name="upload" disabled/>
 													<div class="row">
       													<output id="result"></output>
 													</div>
@@ -234,7 +234,6 @@
 							<th>Hiện trạng công trình</th>
 							<th>Cán bộ phát hiện</th>
 							<th>Người tiếp nhận thông tin</th>
-							<th>Xác nhận của lãnh đạo phường</th>
 							<th>Ghi chú</th>
 							<th></th>
 						</tr>
@@ -247,7 +246,6 @@
 							<td><%=rows.hientrangCT%></td>
 							<td><%=rows.canboPH%></td>
 							<td><%=rows.canboTN%></td>
-							<td><%=(rows.xacnhan == 1 ?"Xác nhận":"Chưa xác nhận")%></td>
 							<td><%=rows.ghichu%></td>
 							<td><button type="button" class="btnadd btn btn-danger" data-toggle="modal"
 									data-target="#ModalEdit<%=rows.id%>">Sửa</button></td>
@@ -285,7 +283,8 @@
 														</div>
 														<div class="form-group">
 															<label>Hình ảnh công trình</label></br>
-															<iframe src="<%=rows.url%>" width="250" height="150"></iframe>
+															<label style="color: red">**Hiện chưa có hình ảnh</label>
+															<!-- <iframe src="<%=rows.url%>" width="250" height="150" aria-disabled="true"></iframe> -->
 														</div>
 														<div class="form-group">
 															<label>Cán bộ phát hiện</label>

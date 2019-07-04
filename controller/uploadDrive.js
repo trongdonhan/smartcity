@@ -100,7 +100,7 @@ module.exports = function (sourcefile, namefile, idViD, count_views) {
         var permissions = [
           {
             'type': 'anyone',
-            'role': 'reader'
+            'role': 'writer'
           }
         ];
         // Using the NPM module 'async'

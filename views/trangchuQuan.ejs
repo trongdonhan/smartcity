@@ -145,13 +145,77 @@
 				<div class="row">
 					<div class="col-xs-4 col-md-3 table-responsive">
 						<table class="table" id="listPhuong">
-
-							<thead><b>DANH SÁCH PHƯỜNG</b></thead>
+								<thead><b>DANH SÁCH PHƯỜNG</b></thead>
 							<tbody>
-								<%results_acc.forEach(function(rows){%>
+								<%i=0%>
+								<%phuong.forEach(function(namePhuong){%>
 								<tr>
-									<td><%=rows.nameAc%></td>
+									<td><button type="button" class="btnadd btn" data-toggle="modal"
+										data-target="#ModalEdit<%=i%>">Phường <%=namePhuong%></button></td>
 								</tr>
+								<div class="modal fade" id="ModalEdit<%=i++%>" role="dialog">
+									<div class="modal-dialog modal-sm">
+										<div class="modal-content">
+											<form role="form" action="" method="">
+												<div class="modal-header">
+													<div class="lbl row">
+														<div class="col-md-push-2 col-lg-push-2 col-xs-8 col-sm-8 col-md-8">
+															<h4><b>BẢNG THEO DÕI CÔNG VIỆC PHƯỜNG <%=namePhuong.toUpperCase()%></b></h4>
+														</div>
+													</div>
+												</div>
+												<div class="modal-body">
+													<div class="container-fluid" id="divPhuong">
+														<div class="row" >
+															<div class="col-xs-1 col-md-1 borderTable">
+																<label name="">STT</label>
+															</div>
+															<div class="col-xs-1 col-md-2 borderTable">
+																	<label>Ngày tuần tra</label> 
+															</div>
+															<div class="col-xs-1 col-md-2 borderTable">
+																<label>Địa chỉ công trình</label>
+																	
+															</div>
+															<div class="col-xs-1 col-md-2 borderTable">
+																<label>Hiện trạng công trình</label>
+																	
+															</div>
+															<div class="col-xs-1 col-md-2 borderTable">
+																	<label>Cán bộ phát hiện</label>
+															</div>
+															<div class="col-xs-1 col-md-2 borderTable">
+																	<label>Người tiếp nhận thông tin</label>
+															</div>
+														</div>
+														<div class="row">
+																<div class="col-xs-1 col-md-1">
+																		STT
+																</div>
+																<div class="col-xs-1 col-md-2">
+																		Ngày tuần tra
+																</div>
+																<div class="col-xs-1 col-md-2">
+																		Địa chỉ công trình
+																</div>
+																<div class="col-xs-1 col-md-2">
+																		Hiện trạng công trình
+																</div>
+																<div class="col-xs-1 col-md-2">
+																		Cán bộ phát hiện
+																</div>
+																<div class="col-xs-1 col-md-2">
+																		Người tiếp nhận thông tin
+																</div>
+														</div>
+													</div>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+								<%});%>
+								<tr><td></td></tr>
 								<!-- <tr>
 									<td>Phường Sơn Kỳ</td>
 								</tr>
@@ -183,10 +247,7 @@
 								<tr>
 									<td>Phường Phú Trung</td>
 								</tr> -->
-								
-								<%});%>
 							</tbody>
-							
 						</table>
 					</div>
                     <div class="col-xs-8 col-md-8 table-responsive">
@@ -204,7 +265,7 @@
 											&emsp;<span class="glyphicon glyphicon-chevron-right"></span> Nội dung: Công trình tại <%=rows.diachiCT%> <%=rows.hientrangCT%> được cán bộ <%=rows.canboPH%> phát hiện và được lập biên bản bởi cán bộ <%=rows.canboTN%><br/>
 											&emsp;<span class="glyphicon glyphicon-chevron-right"></span> Xác nhận từ phường:<%=(rows.xacnhan == 1 ?"Xác nhận":"Chưa xác nhận")%> <br/>
 											&emsp;<span class="glyphicon glyphicon-chevron-right"></span> Ghi chú: <%=rows.ghichu%> <br/>
-											<iframe src="<%=rows.url%>" width="250" height="150"></iframe>
+											<!-- <iframe src="<%=rows.url%>" width="250" height="150"></iframe> -->
 										</p>	
 									</td>
 									<td>

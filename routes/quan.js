@@ -15,12 +15,15 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 // localhost:3000/quan
 router.get('/', (req, res) => {
+    var phuong = ['Tây Thạnh','Sơn Kỳ','Tân Quý','Tân Sân Nhì','Tân Thành','Phú Thọ Hòa','Hòa Thạnh','Phú Thạnh', 'Hiệp Tân', 'Tân Thới Hòa','Phú Trung'];
     if (req.isAuthenticated() && req.session.passport.user.id_auth == '1') {
-        con.query('SELECT * FROM `work_daily` vi, `account` acc, `images_workdaily` i WHERE vi.id_acc = acc.username and i.id_WD = vi.id order by ngayTT DESC, thoigianthuc DESC', (err, results) => {
+        con.query('SELECT * FROM `work_daily` vi, `account` acc WHERE vi.id_acc = acc.username order by ngayTT DESC, thoigianthuc DESC', (err, results) => {
             if (err) throw err;
             else {
                 con.query('SELECT * FROM `account` where id_auth = 2', (err, results_acc)=>{
-                    res.render('trangchuQuan', { results, results_acc });
+                    console.log(phuong);
+                    res.render('trangchuQuan', { results, results_acc, phuong});
+                    
                 })
             }   
         })
@@ -100,6 +103,7 @@ router.post('/duyet', function (req, res, next) {
 
     //path save docs 
     var file = './public/vanban/xem/';
+    var congvanUBNDphuong = 'congvanUBNDphuong_' + req.body.cmndD + '_' + idViD;
     var phanloaihoso = 'phanloaihoso_' + req.body.cmndD + '_' + idViD;
     var phieukiemsoat = 'phieukiemsoat_' + req.body.cmndD + '_' + idViD;
     var QDXP = 'QDXP_' + req.body.cmndD + '_' + idViD;
@@ -138,9 +142,15 @@ router.post('/duyet', function (req, res, next) {
             tienphat: req.body.tienphatD,
             ngoixung: ngoixung,
             ngoixungH: ngoixungH,
-            phuong: phuong
+            phuong: phuong,
+            soBB: req.body.soBBD,
+            hientrangCT: req.body.hientrangCTD,
+            gioLBB: req.body.gioLBBD
         };
 
+
+        // create file congvanUBNDphuong.docx ứng với Mã Vi phạm
+        LoadFile('./public/vanban/duyet/congvanUBNDphuong.docx', file, congvanUBNDphuong, data);
         // create file phanloaihoso.docx ứng với Mã Vi phạm
         LoadFile('./public/vanban/duyet/phanloaihoso.docx', file, phanloaihoso, data);
         // create file phieukiemsoat.docx ứng với Mã Vi phạm
@@ -171,6 +181,7 @@ router.post('/duyet', function (req, res, next) {
 
     //Upload docs into Drive (acc: smartcitytphcm@gmail.com; pass:tanphu123456789)
     setTimeout(function () {
+        upLoadDrive(file + congvanUBNDphuong + '.docx', congvanUBNDphuong + '.docx', idViD, 0)
         upLoadDrive(file + phanloaihoso + '.docx', phanloaihoso + '.docx', idViD, 1)
         upLoadDrive(file + phieukiemsoat + '.docx', phieukiemsoat + '.docx', idViD, 2)
         upLoadDrive(file + TTXPVPHC + '.docx', TTXPVPHC + '.docx', idViD, 3)

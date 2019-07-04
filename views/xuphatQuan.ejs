@@ -57,18 +57,20 @@
 							</li>
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-								aria-haspopup="true" aria-expanded="false">Trật tự đô thị
-								<span class="caret"></span></a>
+									aria-haspopup="true" aria-expanded="false">Trật tự đô thị
+									<span class="caret"></span></a>
 								<ul class="dropdown-menu">
 									<li class="dropdown-submenu">
-										<a class="test" tabindex="-1" href="#">Trật tự xây dựng<span class="caret"></span></a>
+										<a class="test" tabindex="-1" href="#">Trật tự xây dựng<span
+												class="caret"></span></a>
 										<ul class="dropdown-menu">
-										<li><a tabindex="-1" href="../quan/xuphatQuan">Thông tin xử phạt</a></li>
-										<li><a tabindex="-1" href="../vanban">Văn bản</a></li>
+											<li><a tabindex="-1" href="../quan/xuphatQuan">Thông tin xử phạt</a></li>
+											<li><a tabindex="-1" href="../vanban">Văn bản</a></li>
 										</ul>
 									</li>
 									<li class="dropdown-submenu submenu2">
-										<a class="test" tabindex="-1" href="#">Trật tự lòng lề đường<span class="caret"></span></a>
+										<a class="test" tabindex="-1" href="#">Trật tự lòng lề đường<span
+												class="caret"></span></a>
 										<ul class="dropdown-menu">
 											<li><a tabindex="-1" href="#">Thông tin xử phạt</a></li>
 											<li><a tabindex="-1" href="#">Văn bản</a></li>
@@ -186,45 +188,58 @@
 												<div class="row">
 													<div class="group1 col-xs-6 col-md-6">
 														<div class="form-group">
-															<h5><b>Họ và tên:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=rows.hoten%></h5>
+															<h5><b>Họ và
+																	tên:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=rows.hoten%>
+															</h5>
 															<input type="hidden" class="form-control"
 																value="<%=rows.hoten%>" name="hotenD">
 														</div>
 														<div class="form-group">
-															<h5><b>CMND/Thẻ căn cước:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=rows.cmnd%></h5>
+															<h5><b>CMND/Thẻ căn
+																	cước:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=rows.cmnd%>
+															</h5>
 															<input type="hidden" class="form-control"
 																value="<%=rows.cmnd%>" name="cmndD">
 														</div>
 														<div class="form-group">
 															<h5 id="ngayCap<%=rows.id%>"><b>Ngày cấp</b></h5>
 															<input type="hidden" class="form-control"
-																value="<%=rows.ngaycap%>" name="ngaycapD" id="ngaycap<%=rows.id%>">
+																value="<%=rows.ngaycap%>" name="ngaycapD"
+																id="ngaycap<%=rows.id%>">
 														</div>
 														<div class="form-group">
-															
-															<h5><b>Nơi cấp:</b>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&nbsp;<%=rows.diachicap%></h5>
+															<h5><b>Nơi
+																	cấp:</b>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&nbsp;<%=rows.diachicap%>
+															</h5>
 															<input type="hidden" class="form-control"
 																value="<%=rows.diachicap%>" name="diachicapD">
 														</div>
 														<div class="form-group">
-															
-															<h5><b>Số điện thoại:</b>&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;<%=rows.sdt%></h5>
+
+															<h5><b>Số điện
+																	thoại:</b>&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;<%=rows.sdt%>
+															</h5>
 															<input type="hidden" class="form-control"
 																value="<%=rows.sdt%>" name="sdtD">
 														</div>
 														<div class="form-group">
 															<h5 id="ngaySinh<%=rows.id%>"><b>Ngày sinh</b></h5>
 															<input type="hidden" class="form-control"
-																value="<%=rows.ngaysinh%>" name="ngaysinhD" id="ngaysinh<%=rows.id%>">
+																value="<%=rows.ngaysinh%>" name="ngaysinhD"
+																id="ngaysinh<%=rows.id%>">
 														</div>
 														<div class="form-group">
 															<%if (rows.gioitinh == 1) {%>
-															<h5><b>Giới tính:</b>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp; Nam</h5>
+															<h5><b>Giới
+																	tính:</b>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;
+																Nam</h5>
 															<input type="hidden" class="form-control" value="Nam"
 																name="gioitinhD">
 															<%} else {%>
-															<h5><b>Giới tính:</b>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp; Nữ</h5>
+															<h5><b>Giới
+																	tính:</b>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;
+																Nữ</h5>
 															<input type="hidden" class="form-control" value="Nữ"
 																name="gioitinhD">
 															<%}%>
@@ -235,85 +250,150 @@
 																value="<%=rows.nghenghiep%>" name="nghenghiepD">
 														</div>
 														<div class="form-group">
-															<h5><b>Quốc tịch:</b>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&nbsp; <%=rows.quoctich%></h5>
+															<h5><b>Quốc
+																	tịch:</b>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&nbsp;
+																<%=rows.quoctich%></h5>
 															<input type="hidden" class="form-control"
 																value="<%=rows.quoctich%>" name="quoctichD">
 														</div>
 														<div class="form-group">
-																<h5><b>Địa chỉ:</b>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&nbsp;&nbsp; <%=rows.diachiTT%></h5>
-																<input type="hidden" class="form-control"
-																	value="<%=rows.diachiTT%>" name="diachiD">
+															<div class="row">
+																<div class="col-xs-5 col-md-5">
+																	<h5><b>Địa chỉ:</b></h5>
+																</div>
+																<div class="col-xs-6 col-md-6"><%=rows.diachiTT%></div>
 															</div>
+															<input type="hidden" class="form-control"
+																value="<%=rows.diachiTT%>" name="diachiD">
+														</div>
 													</div>
 													<div class="group2 col-xs-6 col-md-6">
 														<input type="hidden" class="form-control" value="<%=rows.idVi%>"
 															name="idViD">
-															<div class="form-group">
-																<h5><b>Mã công trình:</b>&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;<%=rows.idVi%></h5>
+														<div class="form-group">
+															<h5><b>Mã công
+																	trình:</b>&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;<%=rows.idVi%>
+															</h5>
+														</div>
+														<div class="form-group">
+																<h5><b>Số biên bản:</b>&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;<%=rows.soBB%></h5>
+																<input type="hidden" class="form-control"
+																	value="<%=rows.soBB%>" name="soBBD">
 															</div>
 														<div class="form-group">
-															<h5><b>Vị trí:</b>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=rows.diachiVP%></h5>
+															<div class="row">
+																<div class="col-xs-5 col-md-5">
+																	<h5><b>Địa chỉ:</b></h5>
+																</div>
+																<div class="col-xs-6 col-md-6"><%=rows.diachiVP%></div>
+															</div>
 															<input type="hidden" class="form-control"
 																value="<%=rows.diachiVP%>" name="diachiViD">
 														</div>
 														<div class="form-group">
-																<h5 id="ngayVP<%=rows.id%>"><b>Ngày vi phạm</b></h5>
-																<input type="hidden" class="form-control"
-																	value="<%=rows.thoigianVP%>" name="thoigianVPD" id="ngayvp<%=rows.id%>">
+															<label>Hình ảnh công trình</label></br>
+															<label style="color: red">&emsp;&emsp;Hiện không có hình ảnh</label>
+															<!-- <iframe src="<%=rows.url%>" width="250" height="150"></iframe> -->
+														</div>
+														<div class="form-group">
+															<h5 id="ngayVP<%=rows.id%>"><b>Thời điểm vi phạm</b></h5>
+															<input type="hidden" class="form-control"
+																value="<%=rows.thoigianVP%>" name="thoigianVPD"
+																id="ngayvp<%=rows.id%>">
+														</div>
+														<div class="form-group">
+															<h5><b>Giờ lập biên bản:</b> &emsp;&emsp;&emsp;&emsp;<%=rows.gioLBB%></h5>
+															<input type="hidden" class="form-control"
+																	value="<%=rows.gioLBB%>" name="gioLBBD">
 														</div>
 														<div class="form-group">
 															<h5 id="ngayLBB<%=rows.id%>"><b>Ngày lập biên bản</b></h5>
 															<input type="hidden" class="form-control"
-																value="<%=rows.thoigianLBB%>" name="thoigianLBBD" id="ngaylbb<%=rows.id%>">
+																value="<%=rows.thoigianLBB%>" name="thoigianLBBD"
+																id="ngaylbb<%=rows.id%>">
 														</div>
 														<div class="form-group">
 															<h5><b>Nội dung xử phạt:</b></h5>
 															<%results_content.forEach(function(rows_content){
 																if (rows_content.id_violation === rows.id){ %>
-																	<h5>&emsp;&emsp;<%=rows_content.noidung%></h5>
-																	<input type="hidden" class="form-control"
-																	value="<%=rows_content.noidung%>" name="noidungVPD">
+															<h5>&emsp;&emsp;<%=rows_content.noidung%></h5>
+															<input type="hidden" class="form-control"
+																value="<%=rows_content.noidung%>" name="noidungVPD">
 															<%}});%>
 														</div>
 														<div class="form-group">
-															<h5><b>Tiền phạt:</b>&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp; <%=rows.tienphat%></h5>
-															<input type="hidden" class="form-control"
-																	value="<%=rows.tienphat%>" name="tienphatD">
+																<h5><b>Hiện trạng công trình:</b> &emsp;<%=rows.hientrangCT%></h5>
+																<input type="hidden" class="form-control"
+																	value="<%=rows.hientrangCT%>" name="hientrangCTD">
+																
+															</div>
+														<div class="form-group">
+															<div class="row">
+																<div class="col-xs-3 col-md-3">
+																	<h5><b>Tiền phạt:</b></h5>
+																</div>
+																<div class="col-xs-7 col-md-7">
+																	<% if (rows.tienphat == 0) {%>
+																	<h5>25.000.000 (Hai mươi lăm triệu đồng)</h5>
+																	<input type="hidden" class="form-control" value=0
+																		name="tienphat" />
+																	<%} else if(rows.tienphat == 1) {%>
+																	<h5>35.000.000 (Ba mươi lăm triệu đồng)</h5>
+																	<input type="hidden" class="form-control" value=1
+																		name="tienphat" />
+																	<%} else {%>
+																	<h5>75.000.000 (Bảy mười lăm triệu đồng)</h5>
+																	<input type="hidden" class="form-control" value=2
+																		name="tienphat" />
+																	<%}%>
+																</div>
+															</div>
 														</div>
 														
 														<script>
-																function convert(str) {
-																	var date = new Date(str),
-																		mnth = ("0" + (date.getMonth()+1)).slice(-2),
-																		day  = ("0" + date.getDate()).slice(-2);
-																	if([day, mnth, date.getFullYear()].join("-") === 'aN-aN-NaN'){
-																		return "<i>Chưa xác nhận ngày/tháng/năm</i>";
-																	}
-																	return [day, mnth, date.getFullYear()].join("/");
+															function convert(str) {
+																var date = new Date(str),
+																	mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+																	day = ("0" + date.getDate()).slice(-2);
+																if ([day, mnth, date.getFullYear()].join("-") === 'aN-aN-NaN') {
+																	return "<i>Chưa xác nhận ngày/tháng/năm</i>";
 																}
-																var ngayCap = convert('<%=rows.ngaycap%>');
-																var ngaySinh = convert('<%=rows.ngaysinh%>');
-																var ngayVP = convert('<%=rows.thoigianVP%>');
-																var ngayLBB = convert('<%=rows.thoigianLBB%>');
-										
-																document.getElementById("ngayCap<%=rows.id%>").innerHTML = 	"<b>Ngày cấp:</b>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;" + ngayCap;
-																document.getElementById("ngaycap<%=rows.id%>").value = ngayCap;
-																document.getElementById("ngaySinh<%=rows.id%>").innerHTML =	"<b>Ngày sinh:</b>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&nbsp;"+ ngaySinh;
-																document.getElementById("ngaysinh<%=rows.id%>").value = ngaySinh;
-																document.getElementById("ngayVP<%=rows.id%>").innerHTML = 	"<b>Ngày vi phạm:</b>&emsp;&emsp;&emsp;&emsp;&emsp;"+ ngayVP;
-																document.getElementById("ngayvp<%=rows.id%>").value = ngayVP;
-																document.getElementById("ngayLBB<%=rows.id%>").innerHTML = 	"<b>Ngày lập biên bản:</b>&emsp;&emsp;&emsp;"+ ngayLBB;
-																document.getElementById("ngaylbb<%=rows.id%>").value = ngayLBB;
+																return [day, mnth, date.getFullYear()].join("/");
+															}
+															function convertDayYear(str) {
+																var date = new Date(str),
+																	mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+																	day = ("0" + date.getDate()).slice(-2);
+																if ([mnth, date.getFullYear()].join("-") === 'aN-aN-NaN') {
+																	return "<i>Chưa xác nhận ngày/tháng/năm</i>";
+																}
+																return [mnth, date.getFullYear()].join("/");
+															}
+															var ngayCap = convert('<%=rows.ngaycap%>');
+															var ngaySinh = convert('<%=rows.ngaysinh%>');
+															var ngayVP = convertDayYear('<%=rows.thoigianVP%>');
+															var ngayvp = convert('<%=rows.thoigianVP%>')
+															var ngayLBB = convert('<%=rows.thoigianLBB%>');
+
+															document.getElementById("ngayCap<%=rows.id%>").innerHTML= "<b>Ngày cấp: </b>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; "+ ngayCap;
+															document.getElementById("ngaycap<%=rows.id%>").value= ngayCap;
+															document.getElementById("ngaySinh<%=rows.id%>").innerHTML= "<b>Ngày sinh:</b>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&nbsp; "+ ngaySinh;
+															document.getElementById("ngaysinh<%=rows.id%>").value= ngaySinh;
+															document.getElementById("ngayVP<%=rows.id%>").innerHTML= "<b>Thời điểm vi phạm:</b>&emsp;&emsp;&emsp;" +ngayVP;
+															document.getElementById("ngayvp<%=rows.id%>").value= ngayVP;
+															document.getElementById("ngayLBB<%=rows.id%>").innerHTML= "<b>Ngày lập biên bản:</b>&nbsp;&emsp;&emsp;&emsp; "+ ngayLBB;
+															document.getElementById("ngaylbb<%=rows.id%>").value= ngayLBB;
 														</script>
-													</div>
-												</div>
-										</div>
-										<div class="modal-footer">
-											<%if (rows.tinhtrang!= 1) {%>
-											<button type="submit" class="btn1 btn btn-primary" onclick="window.open('/vanban/xem/<%=rows.cmnd%>/<%=rows.idVi%>' ,'_blank')">Duyệt</button>
-											<%} else {%>
-											<button type="submit" disabled class="btn1 btn btn-primary">Duyệt</button>
-											<%}%>
+																</div>
+															</div>
+														</div>
+														<div class="modal-footer">
+															<%if (rows.tinhtrang!= 1) {%>
+															<button type="submit" class="btn1 btn btn-primary" onclick="window.open('/vanban/xem/<%=rows.cmnd%>/<%=rows.idVi%>','_blank')">Duyệt</button>
+															<%} else {%>
+															<button type="submit" disabled
+																class="btn1 btn btn-primary">Duyệt</button>
+															<%}%>
 										</div>						
 									</form>
 									</div>

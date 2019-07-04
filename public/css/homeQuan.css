@@ -2,17 +2,26 @@
 	.container {
 		width: 768px;
 	}
+	.modal-sm {
+		width: 60%;
+	}
 }
 
 @media (min-width: 992px){
 	.container {
 		width: 970px;
 	}
+	.modal-sm {
+		width: 60%;
+	}
 }
 
 @media (min-width: 1200px){
 	.container {
 		width: 1170px;
+	}
+	.modal-sm {
+		width: 60%;
 	}
 }
 
@@ -64,7 +73,18 @@ section{
     left: 100%;
     margin-top: -1px;
 }
-
 .dropdown-submenu:hover>.dropdown-menu {
-	display: block;
- }
+    display: block;
+}
+.btn{
+	padding: 0px;
+	border: none;
+	background: none;
+}
+.modal-content{
+	border: none;
+	border-radius: 0px;
+}
+#divPhuong{
+	border: 1px solid;
+}
