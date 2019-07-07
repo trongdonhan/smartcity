@@ -17,12 +17,13 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 // localhost:3000/phuong
 //dislay info work daily
 router.get('/', function (req, res, next) {
-
+    
     if (req.isAuthenticated() && req.session.passport.user.id_auth == '2') {
-        con.query("select * from work_daily wd  where wd.id_acc = '" + req.session.passport.user.username + "' ORDER BY thoigianthuc DESC", function (error, results, field) {           
-            console.log(results) 
+        var taikhoan = req.session.passport.user.username;
+        con.query("select *, wd.id as idWD, id.id as idIM  from work_daily wd left join images id on wd.id = id.id_WD where wd.id_acc = '" + taikhoan + "' ORDER BY thoigianthuc DESC", function (error, results, field) {           
             if (error) throw error;
-            res.render('trangchuPhuong', { results });
+            console.log(results)
+            res.render('trangchuPhuong', { results, taikhoan });
         });
     }
     else {
@@ -53,6 +54,21 @@ router.post('/capnhatPhuong', urlencodedParser, function (req, res, next) {
                 // });
             }
         });
+    res.redirect('/phuong/');
+});
+
+
+//add image 
+router.post('/uploadImage/:param', urlencodedParser, function (req, res, next) {
+    var taikhoan = req.session.passport.user.username;
+    var form = new formidable.IncomingForm();
+    form.parse(req, function (err, fields, files) {
+        var id_WD = req.params.param;
+        var namefile = id_WD +"_capnhatCV_"+ taikhoan;
+        if (err) throw err;
+        upLoadDriveImage(files.upload.path, namefile , id_WD , null);
+    });
+
     res.redirect('/phuong/');
 });
 
@@ -93,14 +109,15 @@ router.post('/suaPhuong', urlencodedParser, function (req, res, next) {
 /* dislay info land owner */
 router.get('/xuphatphuong', function (req, res, next) {
     if (req.isAuthenticated() && req.session.passport.user.id_auth == '2') {
-        con.query("select ow.*, vi.*  from land_violation vi, land_owner ow where vi.id_chudat = ow.cmnd and id_acc = '" + req.session.passport.user.username + "' ORDER BY vi.tinhtrang ASC, vi.thoigianthucVi DESC", function (error, results, field) {
+        var taikhoan = req.session.passport.user.username;
+        con.query("select *, vi.id as idVi, id.id as idIM  from land_violation vi left join images id on vi.id = id.id_Vi, land_owner ow where vi.id_chudat = ow.cmnd and id_acc = '" + taikhoan + "' ORDER BY vi.tinhtrang ASC, vi.thoigianthucVi DESC", function (error, results, field) {
             if (error) {
                 throw error;
             } else {
-                con.query("select ct.* from content ct left JOIN land_violation vi on ct.id_violation = vi.id left JOIN account acc on vi.id_acc = acc.username where acc.username = '" + req.session.passport.user.username + "'", (err, results_content) => {
+                con.query("select ct.* from content ct left JOIN land_violation vi on ct.id_violation = vi.id left JOIN account acc on vi.id_acc = acc.username where acc.username = '" + taikhoan + "'", (err, results_content) => {
                     if (err)
                         throw err;
-                    res.render('xuphatPhuong', { results, results_content });
+                    res.render('xuphatPhuong', { results, results_content , taikhoan});
                 })
 
             }
@@ -113,6 +130,8 @@ router.get('/xuphatphuong', function (req, res, next) {
     }
 });
 
+
+
 // create event for button "addvipham"
 router.post('/themvipham', urlencodedParser, function (req, res, next) {
     //Land_Owner::
@@ -124,7 +143,6 @@ router.post('/themvipham', urlencodedParser, function (req, res, next) {
     var ngaysinh = req.body.ngaysinh;
     var gioitinh = req.body.gioitinh;
     var diachiTT = req.body.diachiTT;
-    var quoctich = req.body.quoctich;
     var nghenghiep = req.body.nghenghiep;
     //Land_Violation::
     var diachiVP = req.body.diachiVP;
@@ -177,6 +195,22 @@ router.post('/themvipham', urlencodedParser, function (req, res, next) {
 });
 
 
+
+
+//add image 
+router.post('/uploadImageXP/:param', urlencodedParser, function (req, res, next) {
+    var taikhoan = req.session.passport.user.username;
+    var form = new formidable.IncomingForm();
+    form.parse(req, function (err, fields, files) {
+        var idVi = req.params.param;
+        var namefile = idVi +"_diachiVP_"+ taikhoan;
+        console.log(idVi)
+        if (err) throw err;
+        upLoadDriveImage(files.upload.path, namefile , null ,  idVi);
+    });
+
+    res.redirect('/phuong/xuphatphuong');
+});
 
 
 

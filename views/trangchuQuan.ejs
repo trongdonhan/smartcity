@@ -8,6 +8,7 @@
 	<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/css/homeQuan.css">
 	<script src="/jquery/jquery.js"></script>
+	<script src="/jquery/search.js"></script>
 	<script src="/bootstrap/js/bootstrap.min.js"></script>
 	<script lang="javascript">
 			function ShowContent(id){
@@ -120,7 +121,7 @@
 								</ul>
 							</li>
 							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="/images/login_ico.png">Tài khoản<span class="caret"></span></a>
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="/images/login_ico.png"><%=taikhoan%><span class="caret"></span></a>
 								<ul class="dropdown-menu">
 									<li><a href="taikhoan">Thông tin tài khoản</a></li>
 									<li><a href="../logout">Đăng xuất</a></li>
@@ -147,11 +148,11 @@
 						<table class="table" id="listPhuong">
 								<thead><b>DANH SÁCH PHƯỜNG</b></thead>
 							<tbody>
-								<%i=0%>
-								<%phuong.forEach(function(namePhuong){%>
+								<%i = 0;%>
+								<%results_acc.forEach(function(rows_acc){%>
 								<tr>
 									<td><button type="button" class="btnadd btn" data-toggle="modal"
-										data-target="#ModalEdit<%=i%>">Phường <%=namePhuong%></button></td>
+										data-target="#ModalEdit<%=i%>"><%=rows_acc.nameAc%></button></td>
 								</tr>
 								<div class="modal fade" id="ModalEdit<%=i++%>" role="dialog">
 									<div class="modal-dialog modal-sm">
@@ -159,8 +160,8 @@
 											<form role="form" action="" method="">
 												<div class="modal-header">
 													<div class="lbl row">
-														<div class="col-md-push-2 col-lg-push-2 col-xs-8 col-sm-8 col-md-8">
-															<h4><b>BẢNG THEO DÕI CÔNG VIỆC PHƯỜNG <%=namePhuong.toUpperCase()%></b></h4>
+														<div class="col-xs-push-6 col-sm-push-6 col-md-push-6 col-lg-push-2 col-xs-6 col-sm-6 col-md-6">
+															<h4><b>BẢNG THEO DÕI CÔNG VIỆC <%=rows_acc.nameAc.toUpperCase()%></b></h4>
 														</div>
 													</div>
 												</div>
@@ -181,33 +182,53 @@
 																<label>Hiện trạng công trình</label>
 																	
 															</div>
-															<div class="col-xs-1 col-md-2 borderTable">
+															<div class="col-xs-1 col-md-1 borderTable">
 																	<label>Cán bộ phát hiện</label>
 															</div>
 															<div class="col-xs-1 col-md-2 borderTable">
 																	<label>Người tiếp nhận thông tin</label>
 															</div>
+															<div class="col-xs-1 col-md-2 borderTable">
+																<label>Hình ảnh</label>
 														</div>
+														</div>
+														<%j=1%>
+														<%results.forEach(function(rows){%>
+															<% if (rows.id_acc == rows_acc.username) {%>
 														<div class="row">
 																<div class="col-xs-1 col-md-1">
-																		STT
+																		<%=j++%>
+																</div>
+																<div id="ngayTTP<%=rows.idWD%>" class="col-xs-1 col-md-2">
+																		
+																</div>
+																
+																<div class="col-xs-1 col-md-2">
+																		<%=rows.diachiCT%> 
 																</div>
 																<div class="col-xs-1 col-md-2">
-																		Ngày tuần tra
+																		<%=rows.hientrangCT%>
+																</div>
+																<div class="col-xs-1 col-md-1">
+																		<%=rows.canboPH%>
 																</div>
 																<div class="col-xs-1 col-md-2">
-																		Địa chỉ công trình
+																		<%=rows.canboTN%>
 																</div>
 																<div class="col-xs-1 col-md-2">
-																		Hiện trạng công trình
+																	<% if (rows.url == null) {%>
+																		<label style="color: red">**Hiện chưa có hình ảnh</label>
+																		<%} else {%>
+																		<iframe src="<%=rows.url%>" width="120" height="80" aria-disabled="true"></iframe>
+																	<%}%>
 																</div>
-																<div class="col-xs-1 col-md-2">
-																		Cán bộ phát hiện
-																</div>
-																<div class="col-xs-1 col-md-2">
-																		Người tiếp nhận thông tin
-																</div>
+																
 														</div>
+														<!-- <script>
+															var ngayTTP = convert();
+														</script> -->
+														<%};%>
+														<%});%>
 													</div>
 												</div>
 											</form>
@@ -216,37 +237,6 @@
 								</div>
 								<%});%>
 								<tr><td></td></tr>
-								<!-- <tr>
-									<td>Phường Sơn Kỳ</td>
-								</tr>
-								<tr>
-									<td>Phường Tân Quý</td>
-								</tr>
-								<tr>
-									<td>Phường Tân Sơn Nhì</td>
-								</tr>
-								<tr>
-									<td>Phường Tân Thành</td>
-								</tr>
-								<tr>
-									<td>Phường Phú Thọ Hòa</td>
-								</tr>
-								<tr>
-									<td>Phường Hòa Thạnh</td>
-								</tr>
-	
-								<tr>
-									<td>Phường Phú Thạnh</td>
-								</tr>
-								<tr>
-									<td>Phường Hiệp tân</td>
-								</tr>
-								<tr>
-									<td>Phường Tân Thới Hòa</td>
-								</tr>
-								<tr>
-									<td>Phường Phú Trung</td>
-								</tr> -->
 							</tbody>
 						</table>
 					</div>
@@ -259,17 +249,21 @@
                                 <tr>
 									<td><%=i++%></td>
 									<td>
-										<h5 id="title<%=rows.id%>" class="title" style="color:blue"><b><%=rows.nameAc%> -  Ngày tuần tra: <%=rows.ngayTT%></b></h5>
-										<p  class="content<%=rows.id%>" style="display: none">
+										<h5 id="title<%=rows.idWD%>" class="title" style="color:blue"><b><%=rows.nameAc%> -  Ngày tuần tra: <%=rows.ngayTT%></b></h5>
+										<p  class="content<%=rows.idWD%>" style="display: none">
 											<span class="glyphicon glyphicon-asterisk"></span> BÁO CÁO CÔNG VIỆC:<br/>
 											&emsp;<span class="glyphicon glyphicon-chevron-right"></span> Nội dung: Công trình tại <%=rows.diachiCT%> <%=rows.hientrangCT%> được cán bộ <%=rows.canboPH%> phát hiện và được lập biên bản bởi cán bộ <%=rows.canboTN%><br/>
 											&emsp;<span class="glyphicon glyphicon-chevron-right"></span> Xác nhận từ phường:<%=(rows.xacnhan == 1 ?"Xác nhận":"Chưa xác nhận")%> <br/>
 											&emsp;<span class="glyphicon glyphicon-chevron-right"></span> Ghi chú: <%=rows.ghichu%> <br/>
-											<!-- <iframe src="<%=rows.url%>" width="250" height="150"></iframe> -->
+											<% if (rows.url == null) {%>
+												<label style="color: red">**Hiện chưa có hình ảnh</label>
+												<%} else {%>
+												<iframe src="<%=rows.url%>" width="250" height="150" aria-disabled="true"></iframe>
+											<%}%>
 										</p>	
 									</td>
 									<td>
-										<a id="show<%=rows.id%>" onclick='ShowContent("<%=rows.id%>")'><span class="glyphicon glyphicon-chevron-down"></span></a>
+										<a id="show<%=rows.idWD%>" onclick='ShowContent("<%=rows.idWD%>")'><span class="glyphicon glyphicon-chevron-down"></span></a>
 									</td>
 								</tr>
 								<script>
@@ -283,7 +277,8 @@
 										return [day, mnth, date.getFullYear()].join("-");
 									}
 									var ngayTT = convert("<%=rows.ngayTT%>");
-									document.getElementById("title<%=rows.id%>").innerHTML = "<b><%=rows.nameAc%> -  Ngày tuần tra: " + ngayTT+"</b>";
+									document.getElementById("title<%=rows.idWD%>").innerHTML = "<b><%=rows.nameAc%> -  Ngày tuần tra: " + ngayTT+"</b>";
+									document.getElementById("ngayTTP<%=rows.idWD%>").innerHTML = ngayTT;
 								</script>
 								<%});%>
                             </tbody>

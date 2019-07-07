@@ -15,10 +15,15 @@ module.exports = function (sourcefile, namefile, idViD, count_views) {
   // The file token.json stores the user's access and refresh tokens, and is
   // created automatically when the authorization flow completes for the first
   // time.
-  const TOKEN_PATH = 'token.json';
+
+
+  // const TOKEN_PATH = './controller/configurationDrive/main/token.json';  //main 
+  const TOKEN_PATH = './controller/configurationDrive/test/token.json'; //test
 
   // Load client secrets from a local file.
-  fs.readFile('credentials.json', (err, content) => {
+  // fs.readFile('./controller/configurationDrive/main/credentials.json', (err, content) => {  //main
+  fs.readFile('./controller/configurationDrive/test/credentials.json', (err, content) => { //test
+
     if (err) return console.log('Error loading client secret file:', err);
     // Authorize a client with credentials, then call the Google Drive API.
     authorize(JSON.parse(content), uploadfile);

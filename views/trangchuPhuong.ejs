@@ -167,7 +167,7 @@
 										</div>
 									</div>
 								</div>
-								<!-- //onsubmit="return validateForm() -->
+								<!-- onsubmit="return validateForm()" -->
 								<div class="modal-body">
 									<form role="form" action="capnhatPhuong" id="form-CV" method="POST" onsubmit="return validateForm()">
 										<div class="row">
@@ -187,13 +187,14 @@
 													<input type="text" class="form-control" name="hientrangCT" id="hientrangCT">
 													<label style="display: none" id="IdHientrangCT"></label>
 												</div>
-												<div class="form-group">
+												<!-- <div class="form-group">
 													<label>Hình ảnh công trình</label>
-													<input id="files" type="file" name="upload" disabled/>
+														<input id="files" type="file" name="upload" /><br/>
+														<input type="submit" value="Save" class="btn btn-primary" />
 													<div class="row">
-      													<output id="result"></output>
+														<output id="result"></output>
 													</div>
-												</div>
+												</div> -->
 												<div class="form-group">
 													<label>Cán bộ phát hiện</label>
 													<input type="text" class="form-control" name="canboPH" id="canboPH">
@@ -241,16 +242,65 @@
 						<%results.forEach(function(rows){%>
 						<tr>
 							<td><%=i++%></td>
-							<td id="col_dateCV<%=rows.id%>"></td>
+							<td id="col_dateCV<%=rows.idWD%>"></td>
 							<td><%=rows.diachiCT%></td>
 							<td><%=rows.hientrangCT%></td>
 							<td><%=rows.canboPH%></td>
 							<td><%=rows.canboTN%></td>
 							<td><%=rows.ghichu%></td>
-							<td><button type="button" class="btnadd btn btn-danger" data-toggle="modal"
-									data-target="#ModalEdit<%=rows.id%>">Sửa</button></td>
-							<!-- Modal -->
-							<div class="modal fade" id="ModalEdit<%=rows.id%>" role="dialog">
+							<td>
+								<div class="container-fluid">
+									<div class="row">
+										<div class="col-xs-4 col-md-4 btnEdit">
+											<button type="button" class="btnadd btn btn-danger" data-toggle="modal"
+												data-target="#ModalEdit<%=rows.idWD%>">Sửa</button>
+										</div>
+										<div class="col-xs-4 col-md-4">
+											<%if (rows.url != null) {%>
+											<button type="button" class="btnadd btn btn-primary" data-toggle="modal"
+												data-target="#ModalUpload<%=rows.idWD%>" disabled>Thêm hình</button>
+											<%} else {%>
+												<button type="button" class="btnadd btn btn-primary" data-toggle="modal"
+												data-target="#ModalUpload<%=rows.idWD%>">Thêm hình</button>
+											<%}%>
+										</div>
+									</div>
+								</div>
+							</td>
+							<!-- Modal Upload -->
+							<div class="modal fade" id="ModalUpload<%=rows.idWD%>" role="dialog">
+								<div class="modal-dialog modal-sm modal-sm1">
+									<div class="modal-content">
+										<form role="form" action="uploadImage/<%=rows.idWD%>" method="POST" enctype="multipart/form-data">
+											<div class="modal-header">
+												<div class="lbl row">
+													<div class="col-xs-12 col-sm-12 col-md-12">
+														<h4><b>Hình ảnh hiện trạng công trình <%=rows.idWD%></b></h4>
+													</div>
+												</div>
+											</div>
+											<div class="modal-body">
+												<div class="row">
+													<div class="col-xs-12 col-sm-12 col-md-12 table-bordered">
+														<div class="col-xs-push-4 col-sm-4 col-md-push-4 col-xs-8 col-sm-8 col-md-8">
+															<input id="files<%=i-1%>" type="file" name="upload" /><br/>
+															<label style="color: red"><i>**Chỉ chọn một hình</i></label>
+														</div>
+														<div class="col-xs-push-2 col-sm-2 col-md-push-2 col-xs-8 col-sm-8 col-md-8">
+															<output id="result<%=i-1%>"></output>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="modal-footer">
+												<button type="submit" class="btn1 btn btn-primary">Lưu</button>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+							<!-- Modal Edit -->
+							<div class="modal fade" id="ModalEdit<%=rows.idWD%>" role="dialog">
 								<div class="modal-dialog modal-sm">
 									<div class="modal-content">
 										<form role="form" action="suaPhuong" method="POST">
@@ -258,17 +308,17 @@
 												<div class="lbl row">
 													<div class="col-xs-12 col-sm-12 col-md-12">
 														<h4><b>PHIẾU THEO DÕI, PHÁT HIỆN CÔNG TRÌNH TRÊN ĐỊA BÀN</b></h4>
-														<h4 id="dateTuanTra<%=rows.id%>"></h4></h4>
+														<h4 id="dateTuanTra<%=rows.idWD%>"></h4></h4>
 													</div>
 												</div>
 											</div>
 											<div class="modal-body">
 												<div class="row">
 													<div class="col-xs-12 col-sm-12 col-md-12">
-														<input type="hidden" class="form-control" name="id" value="<%=rows.id%>">
+														<input type="hidden" class="form-control" name="id" value="<%=rows.idWD%>">
 														<div class="form-group">
 															<label>Ngày tuần tra</label>
-															<input type="date" class="form-control" id="dateCV<%=rows.id%>" value="" name="ngayTT" />
+															<input type="date" class="form-control" id="dateCV<%=rows.idWD%>" value="" name="ngayTT" />
 														</div>
 														<div class="form-group">
 															<label>Địa chỉ công trình</label>
@@ -283,8 +333,11 @@
 														</div>
 														<div class="form-group">
 															<label>Hình ảnh công trình</label></br>
+															<% if (rows.url == null) {%>
 															<label style="color: red">**Hiện chưa có hình ảnh</label>
-															<!-- <iframe src="<%=rows.url%>" width="250" height="150" aria-disabled="true"></iframe> -->
+															<%} else {%>
+															<iframe src="<%=rows.url%>" width="250" height="150" aria-disabled="true"></iframe>
+															<%}%>
 														</div>
 														<div class="form-group">
 															<label>Cán bộ phát hiện</label>
@@ -327,9 +380,10 @@
 								var dateFormat = convert("<%=rows.ngayTT%>");
 								var dateStr = [dateFormat[2], dateFormat[1], dateFormat[0]].join("/");
 								
-								document.getElementById("col_dateCV<%=rows.id%>").innerHTML = dateStr;
-								document.getElementById("dateCV<%=rows.id%>").value = [dateFormat[0], dateFormat[1], dateFormat[2]].join("-");
-								
+								document.getElementById("col_dateCV<%=rows.idWD%>").innerHTML = dateStr;
+								document.getElementById("dateCV<%=rows.idWD%>").value = [dateFormat[0], dateFormat[1], dateFormat[2]].join("-");
+								// document.getElementById("dateTuanTra<%=rows.idWD%>").value = [dateFormat[0], dateFormat[1], dateFormat[2]].join("-");
+
 								function validateForm(e){
 									var inputNgayTT = document.getElementById('ngayTT');
 									var inputDiachiCT = document.getElementById('diachiCT');

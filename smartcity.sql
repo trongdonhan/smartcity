@@ -62,8 +62,8 @@ CREATE TABLE `land_owner` (
   `gioitinh` tinyint(1) NOT NULL,
   `quoctich` varchar(100) NOT NULL,
   `diachiTT` varchar(255) NOT NULL,
-  `nghenghiep` varchar(255) NOT NULL,
-  `sdt` varchar(255) NOT NULL
+  `nghenghiep` varchar(255),
+  `sdt` varchar(255)
 );
 
 -- --------------------------------------------------------
@@ -110,7 +110,7 @@ CREATE TABLE `work_daily` (
   `hientrangCT` varchar(255) NOT NULL,
   `canboPH` varchar(100) NOT NULL,
   `canboTN` varchar(100) NOT NULL,
-  `xacnhan` tinyint(1) NOT NULL,
+  `xacnhan` tinyint(1),
   `ghichu` varchar(255) DEFAULT NULL,
   `thoigianthuc` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `id_acc` varchar(100) DEFAULT NULL,
@@ -124,7 +124,7 @@ create table docs(
     `url` varchar(255) not null,
     `id_violation` int(10) not null,
     FOREIGN key (`id_violation`) REFERENCES `land_violation`(`id`),
-`count_views` int(4) not null
+    `count_views` int(4) not null
 );
 
 
@@ -132,7 +132,30 @@ create table docs(
 CREATE table images_workdaily(
     `id` varchar(255) not null PRIMARY key,
     `url` varchar(255) not null,
-    `id_WD` int(10) not null,
+    `id_WD` int(10),
     FOREIGN key (`id_WD`) REFERENCES `work_daily`(`id`)
 )
 
+
+
+--update 4/07 DtaBase::
+alter table land_violation
+add gioLBB varchar(100), add soBB int(10), add hientrangCT varchar(255)
+
+--update 5/7:
+ALTER TABLE `images_workdaily`
+    		ADD `id_Vi` int(11),
+    		ADD CONSTRAINT FOREIGN KEY(`id_Vi`) REFERENCES `land_violation`(id); 
+
+
+drop table images_workdaily;
+
+--update 7/7::: 
+CREATE table images(
+    `id` varchar(255) not null PRIMARY key,
+    `url` varchar(255) not null,
+    `id_WD` int(10),
+    `id_Vi` int(11),
+    FOREIGN key (`id_WD`) REFERENCES `work_daily`(`id`),
+    FOREIGN KEY (`id_Vi`) REFERENCES `land_violation`(`id`)
+)

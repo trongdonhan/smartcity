@@ -15,14 +15,15 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 // localhost:3000/quan
 router.get('/', (req, res) => {
-    var phuong = ['Tây Thạnh','Sơn Kỳ','Tân Quý','Tân Sân Nhì','Tân Thành','Phú Thọ Hòa','Hòa Thạnh','Phú Thạnh', 'Hiệp Tân', 'Tân Thới Hòa','Phú Trung'];
+    
     if (req.isAuthenticated() && req.session.passport.user.id_auth == '1') {
-        con.query('SELECT * FROM `work_daily` vi, `account` acc WHERE vi.id_acc = acc.username order by ngayTT DESC, thoigianthuc DESC', (err, results) => {
+        var taikhoan = req.session.passport.user.username;
+        con.query('SELECT *, wd.id as idWD, im.id as idIM FROM `work_daily` wd left join `images` im on wd.id = im.id_WD, `account` acc WHERE wd.id_acc = acc.username order by ngayTT DESC, thoigianthuc DESC', (err, results) => {
             if (err) throw err;
             else {
                 con.query('SELECT * FROM `account` where id_auth = 2', (err, results_acc)=>{
-                    console.log(phuong);
-                    res.render('trangchuQuan', { results, results_acc, phuong});
+                    console.log(results);
+                    res.render('trangchuQuan', { results, results_acc, taikhoan});
                     
                 })
             }   
@@ -37,16 +38,19 @@ router.get('/', (req, res) => {
 // localhost:3000/quan/xuphatquan
 /* dislay info land owner */
 router.get('/xuphatquan', function (req, res, next) {
+    
     if (req.isAuthenticated() && req.session.passport.user.id_auth == '1') {
-
-        con.query('select ow.*, vi.id as idVi, vi.*, nameAc from land_violation vi, land_owner ow, account acc where vi.id_chudat = ow.cmnd and vi.id_acc = acc.username ORDER BY vi.tinhtrang ASC, vi.thoigianthucVi DESC', function (error, results, field) {
+        var taikhoan = req.session.passport.user.username;
+        con.query('select *, vi.id as idVi, nameAc from land_violation vi left join images im on vi.id = im.id_Vi, land_owner ow, account acc where vi.id_chudat = ow.cmnd and vi.id_acc = acc.username ORDER BY vi.tinhtrang ASC, vi.thoigianthucVi DESC', function (error, results, field) {
             if (error) {
                 throw error;
             } else {
+                console.log(results)
                 con.query("select * from content", (err, results_content) => {
                     if (err)
-                        throw err;
-                    res.render('xuphatQuan', { results, results_content });
+                        { throw err; }
+                        console.log(results_content)
+                    res.render('xuphatQuan', { results, results_content, taikhoan });
                 })
             }
         });

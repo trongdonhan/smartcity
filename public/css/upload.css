@@ -1,4 +1,5 @@
 .thumbnail{
-  height: 90px;
-  margin-bottom: 10px;    
+  width: 85%;
+  height: auto;
+  margin: 0px auto 6px auto;  
 }

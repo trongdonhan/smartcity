@@ -131,8 +131,7 @@
 							</li>
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-									aria-haspopup="true" aria-expanded="false"><img src="/images/login_ico.png">Tài
-									khoản<span class="caret"></span></a>
+									aria-haspopup="true" aria-expanded="false"><img src="/images/login_ico.png"><%=taikhoan%><span class="caret"></span></a>
 								<ul class="dropdown-menu">
 									<li><a href="./taikhoan">Thông tin tài khoản</a></li>
 									<li><a href="../logout">Đăng xuất</a></li>
@@ -242,13 +241,6 @@
 													<input type="text" class="form-control" name="diachiVP"
 														id="diachiVP">
 													<label style="display: none" id="IdDiachiVP"></label>
-												</div>
-												<div class="form-group">
-													<label>Hình ảnh công trình</label>
-													<input id="files" type="file" name="upload" disabled />
-													<div class="row">
-														<output id="result"></output>
-													</div>
 												</div>
 												<div class="form-group">
 													<label>Thời điểm vi phạm</label>
@@ -476,11 +468,59 @@
 							<td><%=rows.sdt%></td>
 							<td><%=rows.diachiTT%></td>
 							<td><%=(rows.tinhtrang == 1?"Đã xử lý":"Chưa xử lý")%></td>
-							<td><button type="button" class="btnadd btn btn-danger" data-toggle="modal"
-									data-target="#ModalEdit<%=rows.id%>" class="view_data">Sửa</button></td>
-
-							<!-- Modal -->
-							<div class="modal fade" id="ModalEdit<%=rows.id%>" role="dialog">
+							<td>
+								<div class="container-fluid">
+										<div class="row">
+											<div class="col-xs-4 col-md-4 btnEdit">
+													<button type="button" class="btnadd btn btn-danger" data-toggle="modal"
+													data-target="#ModalEdit<%=rows.idVi%>" class="view_data">Sửa</button>
+											</div>
+											<div class="col-xs-4 col-md-4">
+													<%if (rows.url != null) {%>
+														<button type="button" class="btnadd btn btn-primary" data-toggle="modal"
+															data-target="#ModalUpload<%=rows.idVi%>" disabled>Thêm hình</button>
+													<%} else {%>
+															<button type="button" class="btnadd btn btn-primary" data-toggle="modal"
+															data-target="#ModalUpload<%=rows.idVi%>">Thêm hình</button>
+													<%}%>
+											</div>
+										</div>
+								</div>
+							</td>
+							<!-- Modal Upload -->
+							<div class="modal fade" id="ModalUpload<%=rows.idVi%>" role="dialog">
+									<div class="modal-dialog modal-sm modal-sm1">
+										<div class="modal-content">
+											<form role="form" action="uploadImageXP/<%=rows.idVi%>" method="POST" enctype="multipart/form-data">
+												<div class="modal-header">
+													<div class="lbl row">
+														<div class="col-xs-12 col-sm-12 col-md-12">
+															<h4><b>Hình ảnh hiện trạng công trình</b></h4>
+														</div>
+													</div>
+												</div>
+												<div class="modal-body">
+													<div class="row">
+														<div class="col-xs-12 col-sm-12 col-md-12 table-bordered">
+															<div class="col-xs-push-4 col-sm-4 col-md-push-4 col-xs-8 col-sm-8 col-md-8">
+																<input id="files<%=i-1%>" type="file" name="upload" /><br/>
+																<label style="color: red"><i>**Chỉ chọn một hình</i></label>
+															</div>
+															<div class="col-xs-push-2 col-sm-2 col-md-push-2 col-xs-8 col-sm-8 col-md-8">
+																<output id="result<%=i-1%>"></output>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="modal-footer">
+													<button type="submit" class="btn1 btn btn-primary">Lưu</button>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+							<!-- Modal Edit -->
+							<div class="modal fade" id="ModalEdit<%=rows.idVi%>" role="dialog">
 								<div class="modal-dialog modal-sm">
 									<div class="modal-content">
 										<div class="modal-header">
@@ -509,9 +549,9 @@
 														</div>
 														<div class="form-group">
 															<label>Ngày cấp</label>
-															<!-- <h5 id="ngayCap<%=rows.id%>" class="form-control"></h5> -->
+															<!-- <h5 id="ngayCap<%=rows.idVi%>" class="form-control"></h5> -->
 															<input type="date" class="form-control"
-																id="ngaycap<%=rows.id%>" name="ngaycap">
+																id="ngaycap<%=rows.idVi%>" name="ngaycap">
 														</div>
 														<div class="form-group">
 															<label>Nơi cấp</label>
@@ -526,8 +566,8 @@
 														<div class="form-group">
 															<label>Ngày sinh</label>
 															<input type="date"
-																class="form-control contentNS<%=rows.id%>"
-																id="ngaysinh<%=rows.id%>" name="ngaysinh">
+																class="form-control contentNS<%=rows.idVi%>"
+																id="ngaysinh<%=rows.idVi%>" name="ngaysinh">
 														</div>
 														<div class="form-group">
 															<label>Giới tính</label>
@@ -559,8 +599,8 @@
 													<div class="group2 col-md-6">
 														<div class="form-group">
 															<label>Mã công trình</label>
-															<!-- <h5>&nbsp;&nbsp;<%=rows.id%></h5> -->
-															<input type="text" class="form-control" value="<%=rows.id%>"
+															<!-- <h5>&nbsp;&nbsp;<%=rows.idVi%></h5> -->
+															<input type="text" class="form-control" value="<%=rows.idVi%>"
 																name="idVP" readonly>
 															<label>Số biên bản</label>
 															<input type="text" class="form-control"
@@ -571,15 +611,17 @@
 														</div>
 														<div class="form-group">
 															<label>Hình ảnh công trình</label></br>
-															<!-- <iframe src="<%=rows.url%>" width="250"
-																height="150"></iframe> -->
-															<label style="color: red">Hiện không có hình ảnh</label>
+															<% if (rows.url == null) {%>
+															<label style="color: red">**Hiện chưa có hình ảnh</label>
+															<%} else {%>
+															<iframe src="<%=rows.url%>" width="250" height="150" aria-disabled="true"></iframe>
+															<%}%>
 														</div>
 														<div class="form-group">
 															<label>Thời điểm vi phạm</label>
 															<input type="date"
-																class="form-control contentVP<%=rows.id%>"
-																id="ngayvp<%=rows.id%>" name="thoigianVP">
+																class="form-control contentVP<%=rows.idVi%>"
+																id="ngayvp<%=rows.idVi%>" name="thoigianVP">
 														</div>
 														<div class="form-group">
 															<label>Giờ lập biên bản</label>
@@ -590,15 +632,15 @@
 														<div class="form-group">
 															<label>Ngày lập biên bản</label>
 															<input type="date"
-																class="form-control contentLBB<%=rows.id%>"
-																id="ngaylbb<%=rows.id%>" name="thoigianLBB">
+																class="form-control contentLBB<%=rows.idVi%>"
+																id="ngaylbb<%=rows.idVi%>" name="thoigianLBB">
 														</div>
 
 														<div class="form-group">
 
 															<label>Nội dung xử phạt</label>
 															<%results_content.forEach(function(rows_content){
-																	if (rows_content.id_violation === rows.id){ %>
+																	if (rows_content.id_violation === rows.idVi){ %>
 															<input type="text" class="form-control"
 																value="<%=rows_content.noidung%>" name="noidungVP"
 																class="contentEdit">
@@ -666,23 +708,23 @@
 															var ngayVP = convert('<%=rows.thoigianVP%>');
 															var ngayLBB = convert('<%=rows.thoigianLBB%>');
 
-															//document.getElementById("ngayCap<%=rows.id%>").innerHTML
+															//document.getElementById("ngayCap<%=rows.idVi%>").innerHTML
 
-															document.getElementById("ngaycap<%=rows.id%>").value
+															document.getElementById("ngaycap<%=rows.idVi%>").value
 																= ngayCap;
-															//document.getElementById("ngaySinh<%=rows.id%>").innerHTML=
+															//document.getElementById("ngaySinh<%=rows.idVi%>").innerHTML=
 															ngaySinh;
-															document.getElementById("ngaysinh<%=rows.id%>").value
+															document.getElementById("ngaysinh<%=rows.idVi%>").value
 																=
 																ngaySinh;
-															//document.getElementById("ngayVP<%=rows.id%>").innerHTML
+															//document.getElementById("ngayVP<%=rows.idVi%>").innerHTML
 
-															document.getElementById("ngayvp<%=rows.id%>").value
+															document.getElementById("ngayvp<%=rows.idVi%>").value
 																=
 																ngayVP;
-															//document.getElementById("ngayLBB<%=rows.id%>").innerHTML
+															//document.getElementById("ngayLBB<%=rows.idVi%>").innerHTML
 
-															document.getElementById("ngaylbb<%=rows.id%>").value
+															document.getElementById("ngaylbb<%=rows.idVi%>").value
 																=
 																ngayLBB;
 														</script>

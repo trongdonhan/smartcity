@@ -11,6 +11,7 @@
 	<link rel="stylesheet" href="/css/vanban.css">
 	<script src="/jquery/jquery.js"></script>
 	<script src="/jquery/vanban.js"></script>
+	<script src="/jquery/search.js"></script>
 	<script src="/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
@@ -40,8 +41,7 @@
 												
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-									aria-haspopup="true" aria-expanded="false"><img src="/images/login_ico.png">Tài
-									khoản<span class="caret"></span></a>
+									aria-haspopup="true" aria-expanded="false"><img src="/images/login_ico.png"><%=taikhoan%><span class="caret"></span></a>
 								<ul class="dropdown-menu">
 									<li><a href="taikhoan">Thông tin tài khoản</a></li>
 									<li><a href="../logout">Đăng xuất</a></li>
@@ -74,19 +74,36 @@
 						<th>Phường đảm nhiệm</th>
 						<th></th>
 					</tr>
-					<% i =1%>
-					<%results.forEach(function(rows){%>
-					<tr>
-						<td><%=i++%></td>
-						<td><%=rows.hoten%></td>
-						<td><%=rows.cmnd%></td>
-						<td><%=rows.diachiVP%></td>
-						<td><%=rows.diachiTT%></td>
-						<td><%=rows.nameAc%></td>
-						<td><button type="button" class="btnadd btn btn-danger" onclick="window.open('/vanban/xem/<%=rows.cmnd%>/<%=rows.idVi%>' ,'_blank')">Xem</button>
-						</td>
-					</tr>
-					<%});%>
+					<%if (quyen == '1') {%>
+						<% i =1%>
+						<%results.forEach(function(rows){%>
+						<tr>
+							<td><%=i++%></td>
+							<td><%=rows.hoten%></td>
+							<td><%=rows.cmnd%></td>
+							<td><%=rows.diachiVP%></td>
+							<td><%=rows.diachiTT%></td>
+							<td><%=rows.nameAc%></td>
+							<td><button type="button" class="btnadd btn btn-danger" onclick="window.open('/vanban/xem/<%=rows.cmnd%>/<%=rows.idVi%>' ,'_blank')">Xem</button>
+							</td>
+						</tr>
+						<%});%>
+					<%} else {%>
+						<% i =1%>
+						<%results2.forEach(function(rows){%>
+						<tr>
+							<td><%=i++%></td>
+							<td><%=rows.hoten%></td>
+							<td><%=rows.cmnd%></td>
+							<td><%=rows.diachiVP%></td>
+							<td><%=rows.diachiTT%></td>
+							<td><%=rows.nameAc%></td>
+							<td><button type="button" class="btnadd btn btn-danger" onclick="window.open('/vanban/xem/<%=rows.cmnd%>/<%=rows.idVi%>' ,'_blank')">Xem</button>
+							</td>
+						</tr>
+						
+						<%});%>
+					<%}%>
 				</table>
 			</div>
 		</section>

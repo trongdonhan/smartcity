@@ -113,8 +113,7 @@
 							</li>
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-									aria-haspopup="true" aria-expanded="false"><img src="/images/login_ico.png">Tài
-									khoản<span class="caret"></span></a>
+									aria-haspopup="true" aria-expanded="false"><img src="/images/login_ico.png"><%=taikhoan%><span class="caret"></span></a>
 								<ul class="dropdown-menu">
 									<li><a href="taikhoan">Thông tin tài khoản</a></li>
 									<li><a href="../logout">Đăng xuất</a></li>
@@ -188,16 +187,14 @@
 												<div class="row">
 													<div class="group1 col-xs-6 col-md-6">
 														<div class="form-group">
-															<h5><b>Họ và
-																	tên:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+															<h5><b>Họ và tên:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=rows.hoten%>
 															</h5>
 															<input type="hidden" class="form-control"
 																value="<%=rows.hoten%>" name="hotenD">
 														</div>
 														<div class="form-group">
-															<h5><b>CMND/Thẻ căn
-																	cước:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=rows.cmnd%>
+															<h5><b>CMND/Thẻ căn cước:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=rows.cmnd%>
 															</h5>
 															<input type="hidden" class="form-control"
 																value="<%=rows.cmnd%>" name="cmndD">
@@ -209,8 +206,7 @@
 																id="ngaycap<%=rows.id%>">
 														</div>
 														<div class="form-group">
-															<h5><b>Nơi
-																	cấp:</b>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&nbsp;<%=rows.diachicap%>
+															<h5><b>Nơi cấp:</b>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&nbsp;<%=rows.diachicap%>
 															</h5>
 															<input type="hidden" class="form-control"
 																value="<%=rows.diachicap%>" name="diachicapD">
@@ -292,8 +288,11 @@
 														</div>
 														<div class="form-group">
 															<label>Hình ảnh công trình</label></br>
-															<label style="color: red">&emsp;&emsp;Hiện không có hình ảnh</label>
-															<!-- <iframe src="<%=rows.url%>" width="250" height="150"></iframe> -->
+															<% if (rows.url == null) {%>
+																<label style="color: red">**Hiện chưa có hình ảnh</label>
+																<%} else {%>
+																<iframe src="<%=rows.url%>" width="250" height="150" aria-disabled="true"></iframe>
+															<%}%>
 														</div>
 														<div class="form-group">
 															<h5 id="ngayVP<%=rows.id%>"><b>Thời điểm vi phạm</b></h5>
@@ -315,7 +314,7 @@
 														<div class="form-group">
 															<h5><b>Nội dung xử phạt:</b></h5>
 															<%results_content.forEach(function(rows_content){
-																if (rows_content.id_violation === rows.id){ %>
+																if (rows_content.id_violation === rows.idVi){ %>
 															<h5>&emsp;&emsp;<%=rows_content.noidung%></h5>
 															<input type="hidden" class="form-control"
 																value="<%=rows_content.noidung%>" name="noidungVPD">
@@ -335,16 +334,16 @@
 																<div class="col-xs-7 col-md-7">
 																	<% if (rows.tienphat == 0) {%>
 																	<h5>25.000.000 (Hai mươi lăm triệu đồng)</h5>
-																	<input type="hidden" class="form-control" value=0
-																		name="tienphat" />
+																	<input type="hidden" class="form-control" value="25.000.000 (Hai mươi lăm triệu đồng)"
+																		name="tienphatD" />
 																	<%} else if(rows.tienphat == 1) {%>
 																	<h5>35.000.000 (Ba mươi lăm triệu đồng)</h5>
-																	<input type="hidden" class="form-control" value=1
-																		name="tienphat" />
+																	<input type="hidden" class="form-control" value="35.000.000 (Ba mươi lăm triệu đồng)"
+																		name="tienphatD" />
 																	<%} else {%>
 																	<h5>75.000.000 (Bảy mười lăm triệu đồng)</h5>
-																	<input type="hidden" class="form-control" value=2
-																		name="tienphat" />
+																	<input type="hidden" class="form-control" value="75.000.000 (Bảy mười lăm triệu đồng)"
+																		name="tienphatD" />
 																	<%}%>
 																</div>
 															</div>
@@ -389,9 +388,9 @@
 														</div>
 														<div class="modal-footer">
 															<%if (rows.tinhtrang!= 1) {%>
-															<button type="submit" class="btn1 btn btn-primary" onclick="window.open('/vanban/xem/<%=rows.cmnd%>/<%=rows.idVi%>','_blank')">Duyệt</button>
+															<button type="submit" class="btn1 btn btn-primary" onclick="window.open('/vanban/xem/<%=rows.cmnd%>/<%=rows.idVi%>' ,'_blank')">Duyệt</button>
 															<%} else {%>
-															<button type="submit" disabled
+															<button  type="submit" disabled
 																class="btn1 btn btn-primary">Duyệt</button>
 															<%}%>
 										</div>						
